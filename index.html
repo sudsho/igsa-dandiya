@@ -1,0 +1,1535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>IGSA Dandiya Night 2026</title>
+<meta name="description" content="Register for IGSA Dandiya Night 2026: dinner, dandiya raas and a Bollywood night. Saturday 24 October 2026, 5:00 to 8:30 PM, Bigelow Hall, MITC, University of Louisville.">
+<meta name="theme-color" content="#1E0B3B">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Indian Graduate Student Association, University of Louisville">
+<meta property="og:title" content="IGSA Dandiya Night 2026">
+<meta property="og:description" content="Sat 24 Oct, 5:00 to 8:30 PM, Bigelow Hall (MITC), Louisville. Dinner, dandiya raas and a Bollywood night. Early bird until 15 Oct.">
+<meta property="og:url" content="https://sudsho.github.io/igsa-dandiya/">
+<meta property="og:image" content="https://sudsho.github.io/igsa-dandiya/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600;700&family=Yatra+One&display=swap">
+<style>
+/* =====================================================================
+   Palette from a Navratri night: indigo sky, rani pink, marigold,
+   turmeric, peacock teal and parrot green, with mirror-work silver.
+   ===================================================================== */
+:root{
+  --night:#1E0B3B;
+  --rani:#D6115F;
+  --rani-soft:#FF4D8D;
+  --marigold:#FF8C1A;
+  --turmeric:#FFC93C;
+  --peacock:#0E8FA0;
+  --parrot:#2FA35B;
+  --plum:#7A3E9D;
+
+  --bg:#FFF3F7;
+  --surface:#FFFFFF;
+  --surface-2:#FFF5EC;
+  --field:#FFFBF8;
+  --ink:#2A0E3F;
+  --ink-2:#56406A;
+  --ink-3:#735C7E;
+  --line:#F2D9E4;
+  --line-strong:#E0B3C7;
+  --accent:#D6115F;
+  --accent-ink:#FFFFFF;
+  --good:#1E8E3E;
+  --warn:#B45309;
+  --err:#C2185B;
+  --shadow:0 1px 2px rgba(42,14,63,.06), 0 12px 32px -18px rgba(42,14,63,.38);
+  --focus:#7A3E9D;
+  --r:18px;
+  --r-sm:11px;
+  --display:"Yatra One", "Hind", system-ui, sans-serif;
+  --body:"Hind", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#13061F;
+    --surface:#1E0D30;
+    --surface-2:#28123F;
+    --field:#170926;
+    --ink:#FBEFF6;
+    --ink-2:#DCC6E6;
+    --ink-3:#A98FB8;
+    --line:#35194F;
+    --line-strong:#522E72;
+    --accent:#FF4D8D;
+    --accent-ink:#1A0610;
+    --good:#4ADE80;
+    --warn:#FBBF24;
+    --err:#FF6FA5;
+    --shadow:0 1px 2px rgba(0,0,0,.5), 0 14px 34px -16px rgba(0,0,0,.85);
+    --focus:#FFC93C;
+  }
+}
+
+/* The hidden attribute must always win. On the badminton form a layout rule
+   (display:grid) quietly overrode it, so hidden fields stayed on screen. */
+[hidden]{display:none !important}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-bottom:calc(120px + env(safe-area-inset-bottom))}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:var(--body);font-size:16.5px;line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+img,svg{display:block}
+a{color:var(--accent);text-underline-offset:2px}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:6px}
+.mast :focus-visible,.done :focus-visible{outline-color:#FFC93C}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none !important;transition:none !important;scroll-behavior:auto !important}
+}
+.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* ============================ BUNTING ============================ */
+.bunting{
+  position:relative;height:34px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='34' viewBox='0 0 150 34'%3E%3Cpath d='M0 4 Q75 10 150 4' fill='none' stroke='%23FFC93C' stroke-width='1.6'/%3E%3Cpath d='M3 5.1 L27 5.1 L15 28 Z' fill='%23D6115F'/%3E%3Ccircle cx='15' cy='12.5' r='2.4' fill='%23FFF5EA'/%3E%3Cpath d='M33 6.5 L57 6.5 L45 29.5 Z' fill='%23FF8C1A'/%3E%3Ccircle cx='45' cy='14' r='2.4' fill='%23FFF5EA'/%3E%3Cpath d='M63 7 L87 7 L75 30 Z' fill='%230E8FA0'/%3E%3Ccircle cx='75' cy='14.5' r='2.4' fill='%23FFF5EA'/%3E%3Cpath d='M93 6.5 L117 6.5 L105 29.5 Z' fill='%232FA35B'/%3E%3Ccircle cx='105' cy='14' r='2.4' fill='%23FFF5EA'/%3E%3Cpath d='M123 5.1 L147 5.1 L135 28 Z' fill='%23FFC93C'/%3E%3Ccircle cx='135' cy='12.5' r='2.4' fill='%23D6115F'/%3E%3C/svg%3E") repeat-x 0 0 / 150px 34px;
+}
+
+/* ============================ MASTHEAD ============================ */
+.mast{
+  position:relative;overflow:hidden;isolation:isolate;color:#FFF5EA;
+  background:
+    radial-gradient(120% 80% at 0% 0%, rgba(214,17,95,.55) 0%, rgba(214,17,95,0) 55%),
+    radial-gradient(90% 70% at 100% 25%, rgba(255,140,26,.42) 0%, rgba(255,140,26,0) 55%),
+    radial-gradient(100% 60% at 50% 115%, rgba(14,143,160,.55) 0%, rgba(14,143,160,0) 60%),
+    var(--night);
+}
+/* bandhani: tie-dye dots in two offset colours */
+.mast::before{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background-image:
+    radial-gradient(rgba(255,245,234,.17) 1.3px, transparent 1.9px),
+    radial-gradient(rgba(255,201,60,.15) 1.3px, transparent 1.9px);
+  background-size:22px 22px, 22px 22px;
+  background-position:0 0, 11px 11px;
+  -webkit-mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.2) 100%);
+  mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.2) 100%);
+}
+.rings{
+  position:absolute;z-index:-1;pointer-events:none;
+  width:380px;height:380px;right:-170px;top:-10px;opacity:.5;
+}
+.rings g{transform-box:fill-box;transform-origin:center}
+.rings .spin-a{animation:spin 50s linear infinite}
+.rings .spin-b{animation:spin 70s linear infinite reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+.ghost{
+  position:absolute;z-index:-1;right:-14px;bottom:56px;pointer-events:none;
+  font-family:var(--display);font-size:clamp(96px,30vw,190px);line-height:1;
+  color:rgba(255,245,234,.06);white-space:nowrap;
+}
+@media (min-width:720px){
+  .rings{width:520px;height:520px;right:-120px;top:-70px;opacity:.55}
+}
+.mast-inner{position:relative;max-width:720px;margin:0 auto;padding:14px 20px 30px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand img{
+  height:58px;width:auto;background:#fff;border-radius:12px;padding:4px 6px;
+  box-shadow:0 8px 20px -10px rgba(0,0,0,.7);
+}
+.eyebrow{
+  margin:0;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  color:#FFD9A8;line-height:1.35;
+}
+.eyebrow span{display:block;color:#FF9EC3;letter-spacing:.24em;margin-top:2px}
+h1{
+  margin:20px 0 0;font-family:var(--display);font-weight:400;
+  font-size:clamp(56px,17vw,100px);line-height:1;letter-spacing:.005em;
+}
+.h1-line{
+  display:flex;align-items:center;gap:.12em;width:fit-content;
+  background:linear-gradient(95deg,#FFD23F 0%,#FF9F1C 34%,#FF4D8D 70%,#FF8CC0 100%);
+  -webkit-background-clip:text;background-clip:text;
+  color:transparent;-webkit-text-fill-color:transparent;
+  padding-bottom:.04em;
+}
+.h1-sticks{width:.8em;height:.8em;flex:none;margin-left:.04em;filter:drop-shadow(0 4px 10px rgba(0,0,0,.35))}
+.year{
+  display:inline-block;align-self:center;margin-left:.1em;
+  font-size:.34em;line-height:1;padding:.26em .52em .12em;border-radius:.45em;
+  background:var(--turmeric);-webkit-background-clip:border-box;background-clip:border-box;
+  color:#2A0E3F;-webkit-text-fill-color:#2A0E3F;
+  transform:rotate(-6deg);box-shadow:0 6px 16px -6px rgba(255,201,60,.8);
+}
+.tagline{margin:14px 0 0;max-width:40ch;font-size:17px;color:#F4DDEA;line-height:1.5}
+.facts{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;
+  margin:22px 0 0;padding:0;
+}
+.facts>div{
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);
+  border-radius:14px;padding:10px 12px 8px;backdrop-filter:blur(2px);
+}
+.facts dt{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#FFC93C}
+.facts dd{margin:2px 0 0;font-family:var(--display);font-size:20px;line-height:1.15;color:#FFF5EA}
+@media (min-width:720px){.facts{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.where{
+  display:flex;gap:8px;align-items:flex-start;margin:12px 0 0;
+  font-size:14.5px;color:#E9D2E3;line-height:1.45;
+}
+.where svg{flex:none;margin-top:2px}
+.where a{color:#FFC93C;font-weight:700;white-space:nowrap}
+.highlights{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 0;padding:0;list-style:none}
+.highlights li{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:6px 12px 5px;border-radius:999px;font-size:14.5px;font-weight:600;
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);color:#FFF5EA;
+}
+.highlights .dot{width:9px;height:9px;border-radius:50%;background:var(--c);box-shadow:0 0 0 3px rgba(255,255,255,.12)}
+.countdown{
+  display:inline-flex;flex-wrap:wrap;align-items:baseline;gap:8px;margin:20px 0 0;
+  padding:8px 14px 6px;border-radius:999px;
+  background:rgba(255,201,60,.14);border:1px solid rgba(255,201,60,.4);
+  font-size:14.5px;color:#FFE3A6;
+}
+.countdown strong{font-family:var(--display);font-weight:400;font-size:22px;color:#FFC93C;font-variant-numeric:tabular-nums}
+
+/* ============================ MIRROR BAND ============================ */
+.mirrors{
+  height:36px;background-color:#B80D55;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='30' viewBox='0 0 60 30'%3E%3Cdefs%3E%3CradialGradient id='m' cx='38%25' cy='32%25' r='75%25'%3E%3Cstop offset='0' stop-color='%23FFFFFF'/%3E%3Cstop offset='.55' stop-color='%23E6E9F3'/%3E%3Cstop offset='1' stop-color='%239AA3BF'/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx='15' cy='15' r='10.5' fill='none' stroke='%23FFC93C' stroke-width='2.2' stroke-dasharray='1.4 2.1'/%3E%3Ccircle cx='15' cy='15' r='6.6' fill='url(%23m)'/%3E%3Ccircle cx='45' cy='15' r='10.5' fill='none' stroke='%232EC4B6' stroke-width='2.2' stroke-dasharray='1.4 2.1'/%3E%3Ccircle cx='45' cy='15' r='6.6' fill='url(%23m)'/%3E%3Ccircle cx='30' cy='6' r='1.6' fill='%23FFF5EA'/%3E%3Ccircle cx='30' cy='24' r='1.6' fill='%23FFF5EA'/%3E%3C/svg%3E");
+  background-repeat:repeat-x;background-position:center;background-size:60px 30px;
+  border-top:3px solid var(--turmeric);border-bottom:3px solid var(--turmeric);
+}
+
+/* ============================ LAYOUT ============================ */
+.wrap{max-width:720px;margin:0 auto;padding:0 18px 150px}
+.notices{
+  display:grid;gap:1px;margin:26px 0 0;overflow:hidden;
+  background:var(--line);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);
+}
+.notice{display:flex;gap:12px;align-items:flex-start;padding:13px 16px;background:var(--surface)}
+.notice svg{flex:none;width:26px;height:26px;margin-top:1px}
+.notice p{margin:0;font-size:15px;color:var(--ink-2)}
+.notice b{color:var(--ink)}
+
+/* ============================ TICKETS ============================ */
+.tickets{
+  margin:22px 0 0;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden;
+}
+.tk-head{
+  display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 14px;
+  padding:14px 18px 10px;
+  background:linear-gradient(90deg, rgba(255,201,60,.22), rgba(255,77,141,.16));
+}
+.tk-head h2{margin:0;font-family:var(--display);font-weight:400;font-size:26px;line-height:1.1}
+.tk-head p{margin:0;font-size:14px;color:var(--ink-2);font-weight:500}
+.tk-scroll{overflow-x:auto}
+.tk{width:100%;border-collapse:collapse;font-size:15px}
+.tk th,.tk td{padding:10px 12px;text-align:left;border-top:1px solid var(--line)}
+.tk thead th{border-top:0;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);font-weight:700;vertical-align:bottom}
+.tk thead th small{display:block;font-size:12px;letter-spacing:0;text-transform:none;font-weight:500;color:var(--ink-3)}
+.tk tbody th{font-weight:600;color:var(--ink)}
+.tk td{font-family:var(--display);font-size:21px;line-height:1.1;text-align:center;font-variant-numeric:tabular-nums}
+.tk thead th.c-early,.tk thead th.c-reg{text-align:center}
+.tk .c-early,.tk .c-reg{width:30%}
+.tk.now-early .c-early,.tk.now-reg .c-reg{background:rgba(255,201,60,.2)}
+.tk.now-early thead .c-early,.tk.now-reg thead .c-reg{color:var(--ink)}
+.tk.now-early thead .c-early small,.tk.now-reg thead .c-reg small{color:var(--ink-2)}
+.now-badge{
+  display:inline-block;margin:0 0 4px;padding:2px 8px 0;border-radius:999px;
+  font-size:10.5px;letter-spacing:.12em;background:var(--rani);color:#fff;
+}
+.tk-foot{margin:0;padding:10px 18px 14px;font-size:13.5px;color:var(--ink-2);border-top:1px solid var(--line)}
+
+/* ============================ STAGES ============================ */
+.req-note{margin:26px 2px 0;font-size:13.5px;color:var(--ink-3)}
+.stage{
+  margin:14px 0 0;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden;
+}
+.stage + .stage{margin-top:22px}
+.stage-head{
+  display:flex;align-items:center;gap:12px;padding:14px 18px;
+  border-bottom:1px solid var(--line);background:var(--surface-2);
+}
+.num{
+  flex:none;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;
+  font-family:var(--display);font-size:16px;line-height:1;padding-top:3px;color:#fff;background:var(--c, var(--rani));
+}
+.stage-head h2{margin:0;font-family:var(--display);font-weight:400;font-size:23px;line-height:1.1}
+.stage-head .sub{margin-left:auto;font-size:13px;color:var(--ink-3);font-weight:600;text-align:right}
+.stage-body{padding:18px}
+.stage-body > * + *{margin-top:16px}
+.lead{margin:0;font-size:15px;color:var(--ink-2)}
+
+/* ============================ FIELDS ============================ */
+.grid2{display:grid;grid-template-columns:1fr;gap:16px}
+@media (min-width:560px){.grid2{grid-template-columns:1fr 1fr}}
+.field{display:flex;flex-direction:column;gap:6px;min-width:0}
+.lbl{font-size:14px;font-weight:600;color:var(--ink)}
+.req{color:var(--accent);margin-left:2px}
+.hint{margin:0;font-size:13.5px;color:var(--ink-3);line-height:1.45}
+input[type="text"],input[type="email"],input[type="tel"],input[type="number"],textarea{
+  width:100%;min-width:0;font-size:16px;color:var(--ink);background:var(--field);
+  border:1.5px solid var(--line-strong);border-radius:var(--r-sm);padding:11px 13px;
+  transition:border-color .12s ease, box-shadow .12s ease;
+}
+input::placeholder,textarea::placeholder{color:var(--ink-3);opacity:1}
+input:hover,textarea:hover{border-color:var(--ink-3)}
+input:focus,textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px color-mix(in srgb, var(--accent) 18%, transparent)}
+textarea{resize:vertical;min-height:84px}
+.err{display:none;font-size:13.5px;font-weight:600;color:var(--err)}
+.field.invalid .err{display:block}
+.field.invalid input[type="text"],.field.invalid input[type="email"],
+.field.invalid input[type="tel"],.field.invalid input[type="number"]{border-color:var(--err);background:color-mix(in srgb, var(--err) 6%, var(--field))}
+.field.invalid .seg label{border-color:var(--err)}
+
+/* segmented choices */
+.seg{display:flex;flex-wrap:wrap;gap:8px}
+.seg label{
+  position:relative;display:inline-flex;align-items:center;gap:8px;cursor:pointer;
+  padding:10px 15px 8px;border-radius:999px;font-size:15px;font-weight:600;
+  border:1.5px solid var(--line-strong);background:var(--field);
+  transition:background .12s ease, border-color .12s ease, color .12s ease;
+}
+.seg input{position:absolute;opacity:0;width:1px;height:1px;margin:0}
+.seg label:hover{border-color:var(--ink-3)}
+.seg label:has(input:checked){background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.seg label:has(input:focus-visible){outline:3px solid var(--focus);outline-offset:2px}
+.seg.aff label:has(input:checked){background:var(--rani);border-color:var(--rani);color:#fff}
+.vsym{
+  flex:none;display:inline-grid;place-items:center;width:16px;height:16px;
+  border:2px solid;border-radius:3px;background:#fff;
+}
+.vsym.veg{border-color:#1E8E3E}
+.vsym.veg::after{content:"";width:7px;height:7px;border-radius:50%;background:#1E8E3E}
+.vsym.nonveg{border-color:#8B3A1A}
+.vsym.nonveg::after{content:"";width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-bottom:7px solid #8B3A1A}
+
+/* ============================ PEOPLE CARDS ============================ */
+.plist{display:grid;gap:14px}
+.pcard{
+  border:1.5px solid var(--line-strong);border-radius:var(--r);overflow:hidden;background:var(--surface);
+  box-shadow:inset 5px 0 0 var(--c, var(--rani));
+}
+.pcard-head{
+  display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;padding:10px 12px 9px 20px;
+  background:var(--surface-2);border-bottom:1px solid var(--line);
+}
+.pc-title{font-family:var(--display);font-size:19px;line-height:1.1}
+.pc-price{
+  padding:3px 10px 1px;border-radius:999px;font-size:13.5px;font-weight:700;
+  background:color-mix(in srgb, var(--c, var(--rani)) 16%, transparent);color:var(--ink);white-space:nowrap;
+}
+.pc-remove{
+  flex:none;margin-left:auto;border:0;background:transparent;cursor:pointer;padding:6px 8px;border-radius:8px;
+  font-size:13.5px;font-weight:700;color:var(--ink-3);
+}
+.pc-remove:hover{color:var(--err);background:color-mix(in srgb, var(--err) 10%, transparent)}
+.pcard-body{padding:16px 16px 16px 21px}
+.pcard-body > * + *,.person-block > * + *{margin-top:16px}
+.empty{
+  margin:0;padding:16px;border:1.5px dashed var(--line-strong);border-radius:var(--r-sm);
+  text-align:center;font-size:14.5px;color:var(--ink-3);
+}
+.add-btn{
+  display:inline-flex;align-items:center;gap:8px;cursor:pointer;
+  padding:11px 18px 9px;border-radius:999px;font-weight:700;font-size:15px;
+  border:2px dashed var(--accent);background:color-mix(in srgb, var(--accent) 7%, transparent);color:var(--accent);
+}
+.add-btn:hover{background:color-mix(in srgb, var(--accent) 14%, transparent)}
+.add-btn[disabled]{opacity:.45;cursor:not-allowed}
+.add-btn svg{width:18px;height:18px}
+.cap-note{margin:0;font-size:13.5px;color:var(--ink-3)}
+
+/* ============================ DINNER ============================ */
+.tally{display:flex;flex-wrap:wrap;gap:10px}
+.tally span{
+  display:inline-flex;align-items:center;gap:8px;padding:8px 14px 6px;border-radius:12px;
+  background:var(--surface-2);border:1px solid var(--line);font-weight:600;font-size:15px;
+}
+.tally b{font-family:var(--display);font-weight:400;font-size:21px;line-height:1}
+
+/* ============================ PAYMENT ============================ */
+.tier-line{margin:0;font-size:14.5px;color:var(--ink-2)}
+.tier-line b{color:var(--ink)}
+.tier-note{margin:0;padding:10px 12px;border-radius:10px;font-size:14.5px;font-weight:600;background:color-mix(in srgb, var(--warn) 14%, var(--surface));border:1px solid var(--warn)}
+.qr-copy .warn{margin-top:6px;font-size:13.5px;font-weight:700;color:var(--err)}
+.bill{width:100%;border-collapse:collapse;font-size:15px}
+.bill th{text-align:left;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);font-weight:700;padding:0 0 8px}
+.bill td{padding:9px 0;border-top:1px solid var(--line);vertical-align:top}
+.bill .who{font-weight:600}
+.bill .what{display:block;font-size:13px;color:var(--ink-3);font-weight:500}
+.bill .amt{text-align:right;font-family:var(--display);font-size:19px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.bill .amt.pending{font-family:var(--body);font-size:13px;color:var(--ink-3);font-weight:600}
+.bill tfoot td{border-top:2px solid var(--ink);padding-top:12px;font-weight:700}
+.bill tfoot .amt{font-size:30px;color:var(--accent)}
+.qr-slot{
+  display:flex;gap:16px;align-items:center;padding:16px;border-radius:var(--r);
+  background:linear-gradient(135deg, color-mix(in srgb, var(--turmeric) 22%, var(--surface)), color-mix(in srgb, var(--rani-soft) 14%, var(--surface)));
+  border:1.5px solid var(--line-strong);
+}
+.qr{flex:none;width:136px;height:136px;border-radius:12px;background:#fff;padding:7px;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.qr-copy p{margin:0}
+.qr-copy .k{font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+.qr-copy .big{font-family:var(--display);font-size:38px;line-height:1.05;color:var(--ink);font-variant-numeric:tabular-nums}
+.qr-copy .small{font-size:13.5px;color:var(--ink-2);margin-top:4px;line-height:1.45}
+.qr-copy .payee{margin-top:10px;padding-top:9px;border-top:1px solid color-mix(in srgb, var(--ink) 15%, transparent);font-size:14px;color:var(--ink-2);line-height:1.45}
+.qr-copy .payee b{color:var(--ink)}
+.qr-copy .payee a{font-weight:700;text-decoration:none}
+@media (max-width:420px){.qr-slot{flex-direction:column;align-items:flex-start}.qr{width:160px;height:160px}}
+
+.sr-file{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden}
+.drop{
+  display:flex;align-items:center;gap:14px;cursor:pointer;padding:18px;
+  border:2px dashed var(--line-strong);border-radius:var(--r);background:var(--field);
+  transition:border-color .12s ease, background .12s ease;
+}
+.drop:hover,.drop.over{border-color:var(--accent);background:color-mix(in srgb, var(--accent) 6%, var(--field))}
+.sr-file:focus-visible + .drop{outline:3px solid var(--focus);outline-offset:2px}
+.drop svg{flex:none;width:40px;height:40px}
+.drop b{display:block;font-size:15.5px}
+.drop span{font-size:13.5px;color:var(--ink-3)}
+.field.invalid .drop{border-color:var(--err)}
+.preview{
+  display:flex;align-items:center;gap:14px;padding:12px;border-radius:var(--r);
+  border:1.5px solid var(--good);background:color-mix(in srgb, var(--good) 8%, var(--surface));
+}
+.preview img{width:84px;height:84px;object-fit:cover;border-radius:10px;border:1px solid var(--line)}
+.preview .pdf{display:grid;place-items:center;width:84px;height:84px;border-radius:10px;background:var(--surface-2);font-weight:700;color:var(--rani)}
+.preview .meta{min-width:0;flex:1}
+.preview .meta b{display:block;font-size:14.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.preview .meta span{font-size:13px;color:var(--ink-2)}
+.linkbtn{border:0;background:none;padding:0;cursor:pointer;font-weight:700;color:var(--accent);text-decoration:underline;text-underline-offset:2px}
+.up-status{font-size:13.5px;font-weight:600;color:var(--ink-2)}
+
+/* ============================ WAIVER ============================ */
+.waiver-text{
+  max-height:220px;overflow-y:auto;padding:14px 16px;border-radius:var(--r-sm);
+  background:var(--field);border:1px solid var(--line);font-size:14px;line-height:1.6;color:var(--ink-2);
+}
+.waiver-text ol{margin:0;padding-left:20px}
+.waiver-text li + li{margin-top:8px}
+.check{
+  display:flex;gap:12px;align-items:flex-start;cursor:pointer;padding:13px 15px;border-radius:var(--r-sm);
+  border:1.5px solid var(--line-strong);background:var(--field);
+}
+.check:has(input:checked){border-color:var(--good);background:color-mix(in srgb, var(--good) 8%, var(--field))}
+.check input{flex:none;width:20px;height:20px;margin:1px 0 0;accent-color:var(--rani);cursor:pointer}
+.check span{font-size:15px;font-weight:600;line-height:1.4}
+.field.invalid .check{border-color:var(--err)}
+
+/* ============================ SUBMIT ============================ */
+.formerr{
+  margin:18px 0 0;padding:12px 15px;border-radius:var(--r-sm);font-size:15px;font-weight:600;
+  border:1.5px solid var(--err);background:color-mix(in srgb, var(--err) 9%, var(--surface));color:var(--ink);
+}
+.totalbar{
+  position:sticky;bottom:0;z-index:5;display:flex;align-items:center;gap:14px;
+  margin:24px -18px 0;padding:12px 18px calc(12px + env(safe-area-inset-bottom));
+  background:var(--surface);
+  background:color-mix(in srgb, var(--surface) 90%, transparent);
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  border-top:1px solid var(--line);
+}
+.totalbar .tl{flex:1;min-width:0}
+.totalbar .k{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.totalbar .v{font-family:var(--display);font-size:30px;line-height:1;font-variant-numeric:tabular-nums}
+.totalbar .n{font-size:13px;color:var(--ink-3);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.btn{
+  border:0;cursor:pointer;white-space:nowrap;
+  padding:14px 28px 11px;border-radius:999px;
+  font-family:var(--display);font-size:20px;line-height:1;color:#fff;
+  background:linear-gradient(95deg, #D6115F 0%, #C7372B 55%, #C2410C 100%);
+  box-shadow:0 10px 22px -10px rgba(214,17,95,.8);
+  transition:transform .1s ease, filter .12s ease;
+}
+.btn:hover{filter:brightness(1.07)}
+.btn:active{transform:translateY(1px)}
+.btn[disabled]{opacity:.55;cursor:progress}
+
+footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);font-size:14px;color:var(--ink-3)}
+footer p{margin:0 0 6px}
+footer .who{color:var(--ink);font-weight:700}
+footer a{font-weight:700;text-decoration:none;white-space:nowrap}
+
+/* ============================ CLOSED ============================ */
+.closed{margin:26px 0 0;padding:22px;border-radius:var(--r);background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow)}
+.closed h2{margin:0 0 8px;font-family:var(--display);font-weight:400;font-size:26px}
+.closed p{margin:0 0 8px;color:var(--ink-2)}
+
+/* ============================ DONE ============================ */
+.done{min-height:100vh;color:#FFF5EA;background:
+  radial-gradient(120% 70% at 0% 0%, rgba(214,17,95,.5) 0%, rgba(214,17,95,0) 55%),
+  radial-gradient(90% 60% at 100% 30%, rgba(255,140,26,.4) 0%, rgba(255,140,26,0) 55%),
+  var(--night)}
+.done-inner{max-width:640px;margin:0 auto;padding:28px 20px 70px}
+.done-sticks{width:74px;height:74px;margin:0 0 6px}
+.done-h{
+  margin:0;font-family:var(--display);font-weight:400;font-size:clamp(46px,13vw,72px);line-height:1;
+  background:linear-gradient(95deg,#FFD23F 0%,#FF9F1C 40%,#FF4D8D 80%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;
+  width:fit-content;
+}
+.done-lede{margin:12px 0 22px;font-size:17px;color:#F4DDEA;max-width:46ch}
+.receipt{border-radius:var(--r);overflow:hidden;background:var(--surface);color:var(--ink);box-shadow:0 24px 50px -24px rgba(0,0,0,.8)}
+.rc-head{
+  display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:16px 18px;
+  background:linear-gradient(95deg, #D6115F, #C7372B 55%, #C2410C);color:#fff;
+}
+.rc-head .k{display:block;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.rc-head .v{display:block;font-family:var(--display);font-size:26px;line-height:1.15}
+.rc-amt{text-align:left}
+@media (min-width:480px){.rc-amt{text-align:right}}
+.rc-body{padding:16px 18px 18px}
+.rc-body > * + *{margin-top:14px}
+.rc-note{margin:0;padding:10px 12px;border-radius:10px;font-size:14.5px;font-weight:600;background:color-mix(in srgb, var(--warn) 14%, var(--surface));border:1px solid var(--warn)}
+.party{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.party li{display:flex;justify-content:space-between;gap:10px;font-size:15px;padding:6px 0;border-bottom:1px solid var(--line)}
+.party li span{color:var(--ink-3);font-size:13.5px;font-weight:600;white-space:nowrap}
+.rc-event{padding:14px;border-radius:12px;background:var(--surface-2);font-size:14.5px;color:var(--ink-2);line-height:1.5}
+.rc-event b{color:var(--ink)}
+.rc-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.btn-ghost{
+  display:inline-flex;align-items:center;gap:6px;padding:8px 14px 6px;border-radius:999px;
+  border:1.5px solid var(--accent);color:var(--accent);font-weight:700;font-size:14px;text-decoration:none;
+}
+.steps{margin:0;padding-left:20px;font-size:14.5px;color:var(--ink-2)}
+.steps li + li{margin-top:6px}
+.preview-note{margin:18px 0 0;padding:12px 14px;border-radius:12px;background:rgba(255,201,60,.14);border:1px solid rgba(255,201,60,.45);font-size:14px;color:#FFE3A6}
+.done .linkbtn{margin-top:20px;color:#FFC93C;font-size:15.5px}
+.done-contact{margin:18px 0 0;font-size:14px;color:#D9C2D6}
+.done-contact a{color:#FFC93C;font-weight:700;text-decoration:none;white-space:nowrap}
+.confetti{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:50}
+
+/* honeypot: invisible to people, visible to form-filling bots */
+.hp{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="sticks" viewBox="0 0 100 100">
+      <g transform="rotate(38 50 50)">
+        <rect x="45.5" y="8" width="9" height="84" rx="4.5" fill="#FFB020"/>
+        <rect x="45.5" y="17" width="9" height="7" fill="#D6115F"/>
+        <rect x="45.5" y="29" width="9" height="5" fill="#2FA35B"/>
+        <rect x="45.5" y="66" width="9" height="5" fill="#2FA35B"/>
+        <rect x="45.5" y="76" width="9" height="7" fill="#D6115F"/>
+        <circle cx="50" cy="6.5" r="4.4" fill="#FFE08A" stroke="#B8860B" stroke-width="1"/>
+        <circle cx="50" cy="93.5" r="4.4" fill="#FFE08A" stroke="#B8860B" stroke-width="1"/>
+      </g>
+      <g transform="rotate(-38 50 50)">
+        <rect x="45.5" y="8" width="9" height="84" rx="4.5" fill="#FF4D8D"/>
+        <rect x="45.5" y="17" width="9" height="7" fill="#FFC93C"/>
+        <rect x="45.5" y="29" width="9" height="5" fill="#0E8FA0"/>
+        <rect x="45.5" y="66" width="9" height="5" fill="#0E8FA0"/>
+        <rect x="45.5" y="76" width="9" height="7" fill="#FFC93C"/>
+        <circle cx="50" cy="6.5" r="4.4" fill="#FFE08A" stroke="#B8860B" stroke-width="1"/>
+        <circle cx="50" cy="93.5" r="4.4" fill="#FFE08A" stroke="#B8860B" stroke-width="1"/>
+      </g>
+    </symbol>
+    <symbol id="plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></symbol>
+  </defs>
+</svg>
+
+<div id="app">
+  <header class="mast">
+    <div class="bunting" aria-hidden="true"></div>
+    <svg class="rings" viewBox="0 0 420 420" aria-hidden="true">
+      <g class="spin-a"><circle cx="210" cy="210" r="196" fill="none" stroke="#FFC93C" stroke-width="7" stroke-linecap="round" stroke-dasharray="0 22.806"/></g>
+      <g class="spin-b"><circle cx="210" cy="210" r="158" fill="none" stroke="#FF4D8D" stroke-width="8" stroke-linecap="round" stroke-dasharray="0 24.818"/></g>
+      <g class="spin-a"><circle cx="210" cy="210" r="120" fill="none" stroke="#2EC4B6" stroke-width="7" stroke-linecap="round" stroke-dasharray="0 20.944"/></g>
+      <g class="spin-b"><circle cx="210" cy="210" r="82" fill="none" stroke="#FF9F1C" stroke-width="7" stroke-linecap="round" stroke-dasharray="0 18.4"/></g>
+      <circle cx="210" cy="210" r="42" fill="none" stroke="#FFF5EA" stroke-opacity=".35" stroke-width="2" stroke-dasharray="3 6"/>
+    </svg>
+    <span class="ghost" aria-hidden="true">डांडिया</span>
+
+    <div class="mast-inner">
+      <div class="brand">
+        <img src="assets/igsa-logo.png" alt="IGSA, Indian Graduate Student Association" width="87" height="58">
+        <p class="eyebrow">Indian Graduate Student Association<span>presents</span></p>
+      </div>
+
+      <h1>
+        <span class="h1-line">Dandiya<svg class="h1-sticks" aria-hidden="true"><use href="#sticks"/></svg></span>
+        <span class="h1-line">Night <span class="year">2026</span></span>
+      </h1>
+      <p class="tagline">Dinner, then dandiya raas, then a Bollywood night to close. Come dressed in your ethnic best. Everyone is welcome, on campus and off.</p>
+
+      <dl class="facts">
+        <div><dt>When</dt><dd>Sat, 24 Oct</dd></div>
+        <div><dt>Time</dt><dd>5:00 to 8:30 PM</dd></div>
+        <div><dt>Where</dt><dd>Bigelow Hall, MITC</dd></div>
+        <div><dt>Dress</dt><dd>Ethnic wear</dd></div>
+      </dl>
+      <p class="where">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFC93C" stroke-width="2.2" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+        <span>Bigelow Hall, Miller Information Technology Center, 101 Eastern Pkwy #199, Louisville, KY 40208. <a href="https://www.google.com/maps/search/?api=1&amp;query=Miller%20Information%20Technology%20Center%2C%20101%20Eastern%20Pkwy%2C%20Louisville%2C%20KY%2040208" target="_blank" rel="noopener">Open map</a></span>
+      </p>
+      <ul class="highlights" aria-label="What is included">
+        <li><span class="dot" style="--c:#FFC93C"></span>Full dinner</li>
+        <li><span class="dot" style="--c:#FF4D8D"></span>Dandiya raas</li>
+        <li><span class="dot" style="--c:#2EC4B6"></span>Bollywood night</li>
+        <li><span class="dot" style="--c:#7BE08F"></span>Sticks provided</li>
+      </ul>
+      <p class="countdown" id="countdown"><span id="cdLabel">Early bird ends in</span> <strong id="cdVal">&nbsp;</strong></p>
+    </div>
+  </header>
+  <div class="mirrors" aria-hidden="true"></div>
+
+  <main class="wrap">
+    <section class="closed" id="closed" hidden>
+      <h2 tabindex="-1">Registration is closed</h2>
+      <p id="closedPaid" hidden></p>
+      <p>Registration for Dandiya Night 2026 closed on Thursday 22 October at 11:59 PM, so the kitchen has a final dinner count.</p>
+      <p>Already registered and can't find your details? Email <a href="mailto:igsa.uofl@gmail.com">igsa.uofl@gmail.com</a> or call Junead on <a href="tel:+15028761596">+1 (502) 876-1596</a>.</p>
+    </section>
+
+    <div class="notices" id="notices">
+      <div class="notice">
+        <svg aria-hidden="true"><use href="#sticks"/></svg>
+        <p><b>Dandiya sticks are provided.</b> Just bring your energy.</p>
+      </div>
+      <div class="notice">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z" fill="#FF8C1A"/></svg>
+        <p><b>Dress code is ethnic wear.</b> Wear your Indian best, or the traditional dress of your own culture: African, Vietnamese, any heritage you want to celebrate.</p>
+      </div>
+      <div class="notice">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#0E8FA0" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5"/><circle cx="17" cy="9" r="2.6"/><path d="M15.5 14.2c2.3.2 4.2 1.8 4.8 4.8"/></svg>
+        <p><b>One registration covers your whole group.</b> Add your guests and children below and pay once.</p>
+      </div>
+    </div>
+
+    <section class="tickets" id="tickets" aria-labelledby="tk-h">
+      <div class="tk-head">
+        <h2 id="tk-h">Tickets</h2>
+        <p>Dinner is included in every ticket</p>
+      </div>
+      <div class="tk-scroll">
+        <table class="tk" id="tkTable">
+          <thead>
+            <tr>
+              <th scope="col"><span class="sr">Who</span></th>
+              <th scope="col" class="c-early"><span class="now-badge" id="nowEarly" hidden>NOW</span>Early bird<small>until Thu 15 Oct</small></th>
+              <th scope="col" class="c-reg"><span class="now-badge" id="nowReg" hidden>NOW</span>Regular<small>16 to 22 Oct</small></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">UofL student, faculty or staff</th><td class="c-early">$3</td><td class="c-reg">$5</td></tr>
+            <tr><th scope="row">Non-UofL</th><td class="c-early">$5</td><td class="c-reg">$10</td></tr>
+            <tr><th scope="row">Children 10 to 17</th><td class="c-early">$3</td><td class="c-reg">$3</td></tr>
+            <tr><th scope="row">Children under 10</th><td class="c-early">Free</td><td class="c-reg">Free</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="tk-foot">Guests pay by their own affiliation, so a UofL guest pays the UofL price. Early bird ends Thursday 15 October at 11:59 PM, and registration closes Thursday 22 October at 11:59 PM.</p>
+    </section>
+
+    <form id="reg" novalidate autocomplete="off">
+      <p class="req-note">Fields marked <span class="req" aria-hidden="true">*</span> are required.</p>
+
+      <!-- 1 YOU -->
+      <section class="stage">
+        <div class="stage-head"><span class="num" style="--c:var(--rani)">1</span><h2 id="me-h">Your details</h2></div>
+        <div class="stage-body">
+          <p class="lead">UofL students, faculty and staff give their UofL email and Student ID or Employee ID. Everyone else just gives their email.</p>
+          <div class="person-block" id="me-card" data-p="me" role="group" aria-labelledby="me-h"></div>
+        </div>
+      </section>
+
+      <!-- 2 GUESTS -->
+      <section class="stage">
+        <div class="stage-head"><span class="num" style="--c:var(--marigold);color:#2A0E3F">2</span><h2>Guests</h2><span class="sub">Optional, 18 and over</span></div>
+        <div class="stage-body">
+          <p class="empty" id="guestEmpty">Bringing friends or family aged 18 or over? Add each one here. Each guest pays by their own affiliation.</p>
+          <div class="plist" id="guestList"></div>
+          <button type="button" class="add-btn" data-act="add-guest" id="addGuest"><svg aria-hidden="true"><use href="#plus"/></svg>Add a guest</button>
+          <p class="cap-note" id="guestCap" hidden>That's the limit of 20 guests on one registration. For a bigger group, register the rest separately.</p>
+        </div>
+      </section>
+
+      <!-- 3 CHILDREN -->
+      <section class="stage">
+        <div class="stage-head"><span class="num" style="--c:#0B6E7B">3</span><h2>Children</h2><span class="sub">Optional, under 18</span></div>
+        <div class="stage-body">
+          <p class="empty" id="kidEmpty">Children under 10 are free. Ages 10 to 17 are $3. They stay with you, so we only need a name, age and dinner choice.</p>
+          <div class="plist" id="kidList"></div>
+          <button type="button" class="add-btn" data-act="add-kid" id="addKid"><svg aria-hidden="true"><use href="#plus"/></svg>Add a child</button>
+          <p class="cap-note" id="kidCap" hidden>That's the limit of 20 children on one registration. For more, register the rest separately.</p>
+        </div>
+      </section>
+
+      <!-- 4 DINNER -->
+      <section class="stage">
+        <div class="stage-head"><span class="num" style="--c:var(--parrot);color:#2A0E3F">4</span><h2>Dinner</h2></div>
+        <div class="stage-body">
+          <p class="lead">Full dinner is served to everyone. Here is your group's order from the choices above.</p>
+          <div class="tally" id="tally"></div>
+          <div class="field" data-f="notes">
+            <label class="lbl" for="notes">Food allergies or dietary notes</label>
+            <textarea id="notes" maxlength="600" autocomplete="off" placeholder="For example: nut allergy for one guest, no onion or garlic."></textarea>
+            <p class="hint">Optional. Tell us about allergies for anyone in your group.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5 PAYMENT -->
+      <section class="stage">
+        <div class="stage-head"><span class="num" style="--c:var(--plum)">5</span><h2>Payment</h2></div>
+        <div class="stage-body">
+          <p class="tier-line" id="tierLine"></p>
+          <p class="tier-note" id="tierNote" role="status" hidden></p>
+          <div id="bill"></div>
+          <div class="qr-slot">
+            <img class="qr" src="assets/zelle-qr.png" alt="Zelle QR code to pay Junead Mankari" width="136" height="136">
+            <div class="qr-copy">
+              <p class="k" id="qrLabel">Send exactly</p>
+              <p class="big" id="qrAmount">$0</p>
+              <p class="warn" id="qrWarn" hidden>Finish everyone's details above before you pay.</p>
+              <p class="small">Scan with your banking app, or send by Zelle to the number below. Put your full name in the Zelle note.</p>
+              <p class="payee">Zelle to <b>Junead Mankari</b><br><a href="tel:+15028761596">+1 (502) 876-1596</a></p>
+            </div>
+          </div>
+          <div class="field" data-f="zelleRef">
+            <label class="lbl" for="zelleRef">Zelle confirmation number<span class="req" aria-hidden="true">*</span></label>
+            <input id="zelleRef" type="text" maxlength="60" autocomplete="off" aria-required="true" placeholder="From your Zelle payment receipt">
+            <span class="err">Enter the confirmation number from your Zelle payment.</span>
+          </div>
+          <div class="field" data-f="shot">
+            <span class="lbl" id="shotLbl">Screenshot of your Zelle payment<span class="req" aria-hidden="true">*</span></span>
+            <input type="file" id="shot" class="sr-file" accept="image/*,application/pdf" aria-labelledby="shotLbl" aria-required="true">
+            <label class="drop" id="drop" for="shot">
+              <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="9" width="36" height="30" rx="5" fill="none" stroke="#D6115F" stroke-width="3"/><circle cx="17" cy="19" r="3.5" fill="#FFC93C"/><path d="M9 35l10-10 7 7 5-5 8 8" fill="none" stroke="#0E8FA0" stroke-width="3" stroke-linejoin="round"/></svg>
+              <span><b>Tap to upload your screenshot</b><span>A photo or PDF of the Zelle receipt. Only IGSA organizers can see it.</span></span>
+            </label>
+            <div class="preview" id="preview" hidden>
+              <div id="pvThumb"></div>
+              <div class="meta"><b id="pvName"></b><span id="pvSize"></span><br><button type="button" class="linkbtn" data-act="change-file">Choose a different file</button></div>
+            </div>
+            <span class="up-status" id="upStatus" role="status"></span>
+            <span class="err" id="shotErr" role="alert">Upload a screenshot of your Zelle payment.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6 WAIVER -->
+      <section class="stage">
+        <div class="stage-head"><span class="num" style="--c:var(--turmeric);color:#2A0E3F">6</span><h2>Waiver and photos</h2></div>
+        <div class="stage-body">
+          <div class="waiver-text" tabindex="0" aria-label="Liability waiver">
+            <ol>
+              <li>I am attending IGSA Dandiya Night 2026 voluntarily. Dandiya raas and Bollywood dancing are physical activities that involve swinging sticks and moving in crowded circles, and I understand they carry a risk of injury.</li>
+              <li>I accept responsibility for my own health and safety, and for the guests and children I am registering. Children must stay with a registered adult at all times.</li>
+              <li>Dinner is prepared for a large group. I will list food allergies in the dinner notes, and I understand the organizers cannot guarantee allergen-free food.</li>
+              <li>I release the Indian Graduate Student Association, the University of Louisville, the Miller Information Technology Center and the event volunteers from liability for any injury, illness, or loss of or damage to property arising from the event.</li>
+              <li>I will follow venue rules and organizer instructions. I understand the organizers may refuse entry to, or ask to leave, anyone behaving unsafely or disrespectfully.</li>
+              <li>My guests have agreed to these terms, and I am the parent or guardian of the children I am registering, or I have their parent's or guardian's permission.</li>
+            </ol>
+          </div>
+          <div class="field" data-f="waiver">
+            <label class="check"><input type="checkbox" id="waiver" autocomplete="off" aria-required="true"><span>I have read and accept the waiver, for myself, my guests and the children I am registering.</span></label>
+            <span class="err">Accept the waiver to register.</span>
+          </div>
+          <div class="field" data-f="photo">
+            <span class="lbl" id="photoLbl">Photos and videos<span class="req" aria-hidden="true">*</span></span>
+            <p class="hint">IGSA photographs the evening for its social media.</p>
+            <div class="seg" role="radiogroup" aria-labelledby="photoLbl" aria-required="true">
+              <label><input type="radio" name="photo" value="Yes" autocomplete="off">Yes, that's fine</label>
+              <label><input type="radio" name="photo" value="No" autocomplete="off">Please don't post photos of my group</label>
+            </div>
+            <span class="err">Choose one.</span>
+          </div>
+        </div>
+      </section>
+
+      <div class="hp" aria-hidden="true"><label for="hp">Leave this field empty</label><input type="text" id="hp" tabindex="-1" autocomplete="off"></div>
+
+      <p class="formerr" id="formErr" role="alert" hidden></p>
+
+      <div class="totalbar">
+        <div class="tl">
+          <div class="k">Total</div>
+          <div class="v" id="barTotal">$0</div>
+          <div class="n" id="barNote">1 person</div>
+        </div>
+        <button class="btn" type="submit" id="submitBtn">Register</button>
+      </div>
+    </form>
+
+    <footer>
+      <p class="who">Questions? Junead, Financial Director, IGSA</p>
+      <p><a href="tel:+15028761596">+1 (502) 876-1596</a> &middot; <a href="mailto:igsa.uofl@gmail.com">igsa.uofl@gmail.com</a></p>
+      <p>Indian Graduate Student Association &middot; University of Louisville</p>
+    </footer>
+  </main>
+</div>
+
+<div id="done" class="done" hidden>
+  <div class="bunting" aria-hidden="true"></div>
+  <div class="done-inner">
+    <svg class="done-sticks" aria-hidden="true"><use href="#sticks"/></svg>
+    <h2 class="done-h" id="doneH" tabindex="-1">You're in!</h2>
+    <p class="done-lede" id="doneLede"></p>
+    <div class="receipt">
+      <div class="rc-head">
+        <div><span class="k">Reference</span><span class="v" id="doneRef"></span></div>
+        <div class="rc-amt"><span class="k">Total</span><span class="v" id="doneAmt"></span></div>
+      </div>
+      <div class="rc-body">
+        <p class="rc-note" id="doneDiff" hidden></p>
+        <ul class="party" id="doneParty"></ul>
+        <div class="rc-event">
+          <b>Saturday 24 October 2026, 5:00 to 8:30 PM</b><br>
+          Bigelow Hall, Miller Information Technology Center, 101 Eastern Pkwy #199, Louisville, KY 40208
+          <div class="rc-actions">
+            <a class="btn-ghost" id="calLink" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=IGSA%20Dandiya%20Night%202026&amp;dates=20261024T210000Z%2F20261025T003000Z&amp;location=Bigelow%20Hall%2C%20Miller%20Information%20Technology%20Center%2C%20101%20Eastern%20Pkwy%20%23199%2C%20Louisville%2C%20KY%2040208&amp;details=Dinner%2C%20dandiya%20raas%20and%20a%20Bollywood%20night.%20Dandiya%20sticks%20provided.%20Dress%20code%3A%20ethnic%20wear.">Add to Google Calendar</a>
+            <a class="btn-ghost" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Miller%20Information%20Technology%20Center%2C%20101%20Eastern%20Pkwy%2C%20Louisville%2C%20KY%2040208">Open map</a>
+          </div>
+        </div>
+        <ul class="steps">
+          <li>Keep your reference number. We use it to check your group in at the door.</li>
+          <li>We match every Zelle payment to its registration. If something doesn't line up, Junead will get in touch.</li>
+          <li>Dandiya sticks are provided. Come in ethnic wear, from any culture.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="preview-note" id="previewNote" hidden><b>Preview mode.</b> This registration was not saved anywhere.</p>
+    <button type="button" class="linkbtn" data-act="again">Register another group</button>
+    <p class="done-contact">Questions? Junead, Financial Director, IGSA: <a href="tel:+15028761596">+1 (502) 876-1596</a> &middot; <a href="mailto:igsa.uofl@gmail.com">igsa.uofl@gmail.com</a></p>
+  </div>
+</div>
+
+<script>
+(function () {
+"use strict";
+
+/* The build script replaces __ENDPOINT__ with the Apps Script /exec URL.
+   Left as-is, the page runs in preview mode and saves nothing. */
+const ENDPOINT = "https://script.google.com/macros/s/AKfycbyhRz8SX1GPNQs-ydpeIlOhdl92-tq73MbyIMDZvBwMAD_62-ZilmUJJHRkTvvZgV_1LA/exec";
+const LIVE = /^https:\/\//.test(ENDPOINT);
+
+/* Explicit Eastern offsets, so every visitor gets the same cutoff instant. */
+const EARLY_END = new Date("2026-10-15T23:59:59-04:00");   /* Thu 15 Oct, 11:59 PM ET */
+const REG_CLOSE = new Date("2026-10-22T23:59:59-04:00");   /* Thu 22 Oct, 11:59 PM ET */
+const PRICES = {
+  "Early bird": { "UofL": 3, "Non-UofL": 5 },
+  "Regular":    { "UofL": 5, "Non-UofL": 10 }
+};
+const CHILD_FREE_UNDER = 10;
+const CHILD_PRICE = 3;
+const MAX_GUESTS = 20;
+const MAX_KIDS = 20;
+const MAX_RAW_BYTES = 5 * 1024 * 1024;
+const CARD_COLORS = ["#FF8C1A", "#0E8FA0", "#2FA35B", "#7A3E9D", "#D6115F"];
+const CONTACT = "email igsa.uofl@gmail.com or call Junead on +1 (502) 876-1596";
+
+const REF = "DN-" + Date.now().toString(36).toUpperCase() + Math.random().toString(36).slice(2, 6).toUpperCase();
+
+const $ = (s, r) => (r || document).querySelector(s);
+const money = n => n === 0 ? "Free" : "$" + n;
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const reduceMotion = () => window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const scrollMode = () => reduceMotion() ? "auto" : "smooth";
+
+let guests = [];
+let kids = [];
+let gSeq = 0;
+let kSeq = 0;
+let upload = null;
+let preparing = false;
+let fileSeq = 0;
+let pendingFile = null;
+let lastTier = currentTier();
+let shownTier = lastTier;   /* the price window the page is showing */
+let payTier = null;         /* the window showing when they started paying */
+let lastTally = "";
+
+function currentTier() {
+  const now = new Date();
+  if (now <= EARLY_END) return "Early bird";
+  if (now <= REG_CLOSE) return "Regular";
+  return "Closed";
+}
+function childPrice(age) { return age < CHILD_FREE_UNDER ? 0 : CHILD_PRICE; }
+
+/* ---------------- markup builders ---------------- */
+function affSeg(p) {
+  return '<div class="seg aff" role="radiogroup" aria-required="true" aria-labelledby="' + p + '-aff-l">' +
+    '<label><input type="radio" name="' + p + '-aff" value="UofL">UofL student, faculty or staff</label>' +
+    '<label><input type="radio" name="' + p + '-aff" value="Non-UofL">Non-UofL</label></div>';
+}
+function foodSeg(p) {
+  return '<div class="seg food" role="radiogroup" aria-required="true" aria-labelledby="' + p + '-food-l">' +
+    '<label><input type="radio" name="' + p + '-food" value="Veg"><span class="vsym veg" aria-hidden="true"></span>Veg</label>' +
+    '<label><input type="radio" name="' + p + '-food" value="Non-veg"><span class="vsym nonveg" aria-hidden="true"></span>Non-veg</label></div>';
+}
+const REQ = '<span class="req" aria-hidden="true">*</span>';
+function textField(p, k, label, type, err, extra) {
+  const id = p + "-" + k;
+  return '<div class="field" data-f="' + id + '">' +
+    '<label class="lbl" for="' + id + '">' + label + REQ + '</label>' +
+    '<input id="' + id + '" data-k="' + k + '" type="' + type + '" aria-required="true" ' + (extra || "") + '>' +
+    '<span class="err" id="' + id + '-err">' + err + '</span></div>';
+}
+function personFields(p, self) {
+  return '' +
+  '<div class="grid2">' +
+    textField(p, "name", self ? "Full name" : "Guest's full name", "text", "Enter a first and last name.",
+      'maxlength="80" autocomplete="' + (self ? "name" : "off") + '" placeholder="First and last name"') +
+    '<div class="field" data-f="' + p + '-aff"><span class="lbl" id="' + p + '-aff-l">UofL or not?' + REQ + '</span>' +
+      affSeg(p) + '<span class="err" id="' + p + '-aff-err">Choose UofL or Non-UofL.</span></div>' +
+  '</div>' +
+  '<div class="grid2 grp-uofl" hidden>' +
+    textField(p, "uoflEmail", "UofL email", "email", "Use a @louisville.edu email address.",
+      'maxlength="120" autocomplete="' + (self ? "email" : "off") + '" placeholder="name@louisville.edu" inputmode="email"') +
+    textField(p, "sid", "Student ID or Employee ID", "text", "Enter a Student ID or Employee ID.",
+      'maxlength="20" autocomplete="off" inputmode="numeric" placeholder="ID number"') +
+  '</div>' +
+  '<div class="grp-non" hidden>' +
+    textField(p, "email", "Email", "email", "Enter a valid email address.",
+      'maxlength="120" autocomplete="' + (self ? "email" : "off") + '" placeholder="you@example.com" inputmode="email"') +
+  '</div>' +
+  '<div class="grid2">' +
+    textField(p, "phone", "Phone number", "tel", "Enter a phone number of 10 to 15 digits.",
+      'maxlength="30" autocomplete="' + (self ? "tel" : "off") + '" placeholder="(502) 555-0100" inputmode="tel"') +
+    '<div class="field" data-f="' + p + '-food"><span class="lbl" id="' + p + '-food-l">Dinner' + REQ + '</span>' +
+      foodSeg(p) + '<span class="err" id="' + p + '-food-err">Choose Veg or Non-veg.</span></div>' +
+  '</div>';
+}
+function cardHead(p, word, n) {
+  return '<div class="pcard-head"><span class="pc-title" id="' + p + '-title">' + word + ' <span class="pc-n">' + n + '</span></span>' +
+    '<span class="pc-price" data-price></span>' +
+    '<button type="button" class="pc-remove" data-act="remove" aria-label="Remove ' + word.toLowerCase() + ' ' + n + '">Remove</button></div>';
+}
+function guestCard(p, n, color) {
+  return '<div class="pcard" id="' + p + '-card" data-p="' + p + '" role="group" aria-labelledby="' + p + '-title" style="--c:' + color + '">' +
+    cardHead(p, "Guest", n) + '<div class="pcard-body">' + personFields(p, false) + '</div></div>';
+}
+function kidCard(p, n, color) {
+  return '<div class="pcard" id="' + p + '-card" data-p="' + p + '" role="group" aria-labelledby="' + p + '-title" style="--c:' + color + '">' +
+    cardHead(p, "Child", n) +
+    '<div class="pcard-body">' +
+      '<div class="grid2">' +
+        textField(p, "name", "Child's name", "text", "Enter the child's name.", 'maxlength="80" autocomplete="off" placeholder="First name is fine"') +
+        textField(p, "age", "Age", "number", "Enter an age from 0 to 17.", 'min="0" max="17" step="1" inputmode="numeric" placeholder="Years"') +
+      '</div>' +
+      '<div class="field" data-f="' + p + '-food"><span class="lbl" id="' + p + '-food-l">Dinner' + REQ + '</span>' +
+        foodSeg(p) + '<span class="err" id="' + p + '-food-err">Choose Veg or Non-veg.</span></div>' +
+    '</div></div>';
+}
+
+/* ---------------- reading the form ---------------- */
+function card(p) { return document.getElementById(p + "-card"); }
+function val(root, k) { const el = root && root.querySelector('[data-k="' + k + '"]'); return el ? el.value.trim() : ""; }
+function radio(name) { const el = document.querySelector('input[name="' + name + '"]:checked'); return el ? el.value : ""; }
+
+/* Only the fields that match the chosen affiliation are ever read. */
+function readPerson(p) {
+  const root = card(p);
+  const aff = radio(p + "-aff");
+  return {
+    name: val(root, "name"),
+    aff: aff,
+    uoflEmail: aff === "UofL" ? val(root, "uoflEmail") : "",
+    sid: aff === "UofL" ? val(root, "sid") : "",
+    email: aff === "Non-UofL" ? val(root, "email") : "",
+    phone: val(root, "phone"),
+    food: radio(p + "-food")
+  };
+}
+function readKid(p) {
+  const root = card(p);
+  const a = val(root, "age");
+  const age = a === "" ? null : Number(a);
+  return { name: val(root, "name"), age: age, food: radio(p + "-food") };
+}
+function kidAgeOk(age) { return age !== null && Number.isInteger(age) && age >= 0 && age <= 17; }
+
+/* ---------------- affiliation switch ---------------- */
+function onAff(p) {
+  const root = card(p);
+  const aff = radio(p + "-aff");
+  const u = root.querySelector(".grp-uofl");
+  const n = root.querySelector(".grp-non");
+  u.hidden = aff !== "UofL";
+  n.hidden = aff !== "Non-UofL";
+  /* Wipe the group that is now hidden, so a changed answer never leaves
+     a UofL email or ID behind on a Non-UofL person, or the reverse. */
+  [aff === "UofL" ? n : u].forEach(g => g.querySelectorAll(".field").forEach(f => {
+    f.querySelectorAll("input").forEach(i => { i.value = ""; });
+    setInvalid(f, false);
+  }));
+  const f = root.querySelector('[data-f="' + p + '-aff"]');
+  if (f) setInvalid(f, false);
+  update();
+}
+
+/* ---------------- pricing ---------------- */
+function computeBill(tier) {
+  const lines = [];
+  let total = 0;
+  let complete = true;
+  const me = readPerson("me");
+  const meP = me.aff ? PRICES[tier][me.aff] : null;
+  lines.push({ who: me.name || "You", what: me.aff ? (me.aff + ", " + tier.toLowerCase()) : "choose UofL or Non-UofL", amt: meP });
+  guests.forEach((p, i) => {
+    const g = readPerson(p);
+    const gp = g.aff ? PRICES[tier][g.aff] : null;
+    lines.push({ who: g.name || ("Guest " + (i + 1)), what: "Guest" + (g.aff ? ", " + g.aff : ", choose UofL or Non-UofL"), amt: gp });
+  });
+  kids.forEach((p, i) => {
+    const k = readKid(p);
+    const ok = kidAgeOk(k.age);
+    lines.push({ who: k.name || ("Child " + (i + 1)), what: ok ? ("Child, age " + k.age) : "Child, enter age 0 to 17", amt: ok ? childPrice(k.age) : null });
+  });
+  lines.forEach(l => { if (l.amt === null) complete = false; else total += l.amt; });
+  return { lines: lines, total: total, complete: complete, people: 1 + guests.length + kids.length };
+}
+
+/* ---------------- render ---------------- */
+function update() {
+  const tier = currentTier();
+  if (tier === "Closed") return;
+  shownTier = tier;
+
+  guests.forEach((p, i) => {
+    const c = card(p);
+    c.querySelector(".pc-n").textContent = i + 1;
+    c.querySelector("[data-act=remove]").setAttribute("aria-label", "Remove guest " + (i + 1));
+    const aff = radio(p + "-aff");
+    c.querySelector("[data-price]").textContent = aff ? money(PRICES[tier][aff]) : "UofL or not?";
+  });
+  kids.forEach((p, i) => {
+    const c = card(p);
+    c.querySelector(".pc-n").textContent = i + 1;
+    c.querySelector("[data-act=remove]").setAttribute("aria-label", "Remove child " + (i + 1));
+    const k = readKid(p);
+    let badge = "Enter age";
+    if (k.age !== null && k.age >= 18) badge = "18+, add as a guest";
+    else if (kidAgeOk(k.age)) badge = money(childPrice(k.age));
+    c.querySelector("[data-price]").textContent = badge;
+  });
+
+  $("#guestEmpty").hidden = guests.length > 0;
+  $("#kidEmpty").hidden = kids.length > 0;
+  $("#addGuest").disabled = guests.length >= MAX_GUESTS;
+  $("#guestCap").hidden = guests.length < MAX_GUESTS;
+  $("#addKid").disabled = kids.length >= MAX_KIDS;
+  $("#kidCap").hidden = kids.length < MAX_KIDS;
+
+  /* ticket table */
+  const tk = $("#tkTable");
+  tk.classList.toggle("now-early", tier === "Early bird");
+  tk.classList.toggle("now-reg", tier === "Regular");
+  $("#nowEarly").hidden = tier !== "Early bird";
+  $("#nowReg").hidden = tier !== "Regular";
+
+  /* bill */
+  const b = computeBill(tier);
+  let rows = "";
+  b.lines.forEach(l => {
+    rows += '<tr><td><span class="who">' + esc(l.who) + '</span><span class="what">' + esc(l.what) + '</span></td>' +
+      '<td class="amt' + (l.amt === null ? " pending" : "") + '">' + (l.amt === null ? "to be set" : money(l.amt)) + '</td></tr>';
+  });
+  $("#bill").innerHTML = '<table class="bill"><thead><tr><th scope="col">Who</th><th scope="col" style="text-align:right">Price</th></tr></thead>' +
+    '<tbody>' + rows + '</tbody><tfoot><tr><td>Total' + (b.complete ? "" : ' <span class="what">so far</span>') + '</td>' +
+    '<td class="amt">$' + b.total + '</td></tr></tfoot></table>';
+  $("#tierLine").innerHTML = tier === "Early bird"
+    ? "Prices right now: <b>Early bird</b>, until Thursday 15 October at 11:59 PM."
+    : "Prices right now: <b>Regular</b>, until registration closes Thursday 22 October at 11:59 PM.";
+  $("#qrLabel").textContent = b.complete ? "Send exactly" : "Total so far";
+  $("#qrWarn").hidden = b.complete;
+  $("#qrAmount").textContent = "$" + b.total;
+  $("#barTotal").textContent = "$" + b.total;
+  $("#barNote").textContent = b.people + (b.people === 1 ? " person" : " people") + (b.complete ? "" : ", details missing");
+
+  /* The price window changed after they started paying. */
+  const note = $("#tierNote");
+  if (payTier && payTier !== tier && b.complete) {
+    const paid = computeBill(payTier).total;
+    note.hidden = paid === b.total;
+    note.textContent = "Early bird ended while you were registering, so your total is now $" + b.total +
+      ". If you already sent $" + paid + ", send the $" + (b.total - paid) + " difference to Junead as well.";
+  } else {
+    note.hidden = true;
+  }
+
+  /* dinner tally, rewritten only when a count changes */
+  let veg = 0, non = 0, open = 0;
+  const count = f => { if (f === "Veg") veg++; else if (f === "Non-veg") non++; else open++; };
+  count(radio("me-food"));
+  guests.forEach(p => count(radio(p + "-food")));
+  kids.forEach(p => count(radio(p + "-food")));
+  const tally = '<span><span class="vsym veg" aria-hidden="true"></span>Veg <b>' + veg + '</b></span>' +
+    '<span><span class="vsym nonveg" aria-hidden="true"></span>Non-veg <b>' + non + '</b></span>' +
+    (open ? '<span>Still to choose <b>' + open + '</b></span>' : "");
+  if (tally !== lastTally) { $("#tally").innerHTML = tally; lastTally = tally; }
+}
+
+/* Lock in the price window once they start paying, so a later tier change
+   is flagged instead of silently raising what they were told to send. */
+function markPaying() {
+  if (!payTier && shownTier !== "Closed") payTier = shownTier;
+}
+
+/* ---------------- add / remove people ---------------- */
+function addPerson(list, prefix, seq, build, colorIdx, listEl) {
+  const p = prefix + seq;
+  list.push(p);
+  $(listEl).insertAdjacentHTML("beforeend", build(p, list.length, CARD_COLORS[colorIdx % CARD_COLORS.length]));
+  update();
+  const el = document.getElementById(p + "-name");
+  el.focus({ preventScroll: true });
+  card(p).scrollIntoView({ behavior: scrollMode(), block: "nearest" });
+}
+function addGuest() {
+  if (guests.length >= MAX_GUESTS) return;
+  gSeq++;
+  addPerson(guests, "g", gSeq, guestCard, gSeq - 1, "#guestList");
+}
+function addKid() {
+  if (kids.length >= MAX_KIDS) return;
+  kSeq++;
+  addPerson(kids, "k", kSeq, kidCard, kSeq + 1, "#kidList");
+}
+function removeCard(p) {
+  const list = guests.indexOf(p) !== -1 ? guests : kids;
+  const idx = list.indexOf(p);
+  const c = card(p);
+  if (c) c.remove();
+  list.splice(idx, 1);
+  update();
+  clearFormErr();
+  /* Focus the card that took its place, or the one before it. */
+  const next = list[idx] || list[idx - 1];
+  if (next) {
+    const el = document.getElementById(next + "-name");
+    el.focus({ preventScroll: true });
+    card(next).scrollIntoView({ behavior: scrollMode(), block: "nearest" });
+  } else {
+    const btn = list === guests ? $("#addGuest") : $("#addKid");
+    btn.focus({ preventScroll: true });
+    btn.scrollIntoView({ behavior: scrollMode(), block: "center" });
+  }
+}
+
+/* ---------------- upload ---------------- */
+function fmtSize(n) { return n > 1048576 ? (n / 1048576).toFixed(1) + " MB" : Math.max(1, Math.round(n / 1024)) + " KB"; }
+function readAsBase64(file) {
+  return new Promise((resolve, reject) => {
+    const fr = new FileReader();
+    fr.onload = () => resolve(String(fr.result).split(",")[1] || "");
+    fr.onerror = () => reject(new Error("Could not read that file."));
+    fr.readAsDataURL(file);
+  });
+}
+function loadImage(url) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = () => reject(new Error("decode"));
+    img.src = url;
+  });
+}
+/* Screenshots are shrunk to at most 1600 px and re-encoded as JPEG, which
+   keeps an upload to a few hundred KB even on slow phone data. */
+async function compressImage(file) {
+  const url = URL.createObjectURL(file);
+  try {
+    const img = await loadImage(url);
+    const w0 = img.naturalWidth, h0 = img.naturalHeight;
+    if (!w0 || !h0) throw new Error("decode");
+    const scale = Math.min(1, 1600 / Math.max(w0, h0));
+    const w = Math.round(w0 * scale), h = Math.round(h0 * scale);
+    const c = document.createElement("canvas");
+    c.width = w; c.height = h;
+    const ctx = c.getContext("2d");
+    ctx.fillStyle = "#ffffff";
+    ctx.fillRect(0, 0, w, h);
+    ctx.drawImage(img, 0, 0, w, h);
+    const dataUrl = c.toDataURL("image/jpeg", 0.85);
+    const data = dataUrl.split(",")[1] || "";
+    if (!data) throw new Error("encode");
+    return { name: file.name.replace(/\.[^.]+$/, "") + ".jpg", mime: "image/jpeg", data: data, bytes: Math.round(data.length * 0.75), preview: dataUrl };
+  } finally {
+    URL.revokeObjectURL(url);
+  }
+}
+const OK_RAW = ["image/jpeg", "image/png", "image/webp", "image/heic", "image/heif", "image/gif", "application/pdf"];
+async function prepareFile(file) {
+  const isPdf = file.type === "application/pdf" || /\.pdf$/i.test(file.name);
+  const isHeic = /\.(heic|heif)$/i.test(file.name);
+  const isImage = /^image\//.test(file.type) || isHeic;
+  if (!isPdf && !isImage) throw new Error("Please upload a photo or a PDF of your Zelle receipt.");
+  if (isImage) {
+    try { return await compressImage(file); } catch (e) { /* this browser can't draw it, send the original */ }
+  }
+  if (file.size > MAX_RAW_BYTES) throw new Error("That file is over 5 MB. Please upload a screenshot of the Zelle receipt instead.");
+  const mime = isPdf ? "application/pdf" : (file.type || (isHeic ? "image/heic" : ""));
+  if (OK_RAW.indexOf(mime) === -1) throw new Error("Please upload a JPG, PNG or PDF.");
+  return { name: file.name, mime: mime, data: await readAsBase64(file), bytes: file.size, preview: null };
+}
+function showDrop(on) {
+  $("#drop").hidden = !on;
+  $("#preview").hidden = on;
+  /* the invisible file input is only a tab stop while the drop zone shows */
+  if (on) $("#shot").removeAttribute("tabindex"); else $("#shot").setAttribute("tabindex", "-1");
+}
+async function onFile(file) {
+  const my = ++fileSeq;
+  const status = $("#upStatus");
+  const field = $('[data-f="shot"]');
+  upload = null;
+  showDrop(true);
+  setInvalid(field, false);
+  $("#shotErr").textContent = "Upload a screenshot of your Zelle payment.";
+  if (!file) { status.textContent = ""; return; }
+  preparing = true;
+  status.textContent = "Getting your screenshot ready...";
+  try {
+    const up = await prepareFile(file);
+    if (my !== fileSeq) return;           /* a newer file was chosen meanwhile */
+    upload = up;
+    markPaying();
+    status.textContent = "Screenshot ready: " + file.name + ", " + fmtSize(up.bytes) + ".";
+    $("#pvThumb").innerHTML = up.preview
+      ? '<img src="' + up.preview + '" alt="Your Zelle screenshot">'
+      : '<div class="pdf">' + (up.mime === "application/pdf" ? "PDF" : "IMG") + '</div>';
+    $("#pvName").textContent = file.name;
+    $("#pvSize").textContent = "Ready to send, " + fmtSize(up.bytes);
+    showDrop(false);
+    setInvalid(field, false);
+    clearFormErr();
+    $("#preview [data-act=change-file]").focus({ preventScroll: true });
+  } catch (err) {
+    if (my !== fileSeq) return;
+    upload = null;
+    status.textContent = "";
+    $("#shotErr").textContent = err.message;
+    setInvalid(field, true);
+    $("#shot").value = "";
+  } finally {
+    if (my === fileSeq) preparing = false;
+  }
+}
+function takeFile(f) { if (f) pendingFile = onFile(f); }
+
+/* ---------------- validation ---------------- */
+/* Marks a field and wires its error text to the control for screen readers. */
+function setInvalid(f, bad) {
+  if (!f) return;
+  f.classList.toggle("invalid", !!bad);
+  const err = f.querySelector(".err");
+  f.querySelectorAll('input:not([type=radio]), textarea, [role=radiogroup]').forEach(c => {
+    if (bad) {
+      c.setAttribute("aria-invalid", "true");
+      if (err && err.id) c.setAttribute("aria-describedby", err.id);
+    } else {
+      c.removeAttribute("aria-invalid");
+      c.removeAttribute("aria-describedby");
+    }
+  });
+}
+const phoneOk = v => { const n = v.replace(/\D/g, "").length; return n >= 10 && n <= 15; };
+function validate() {
+  const bad = [];
+  const mark = (key, isBad, msg) => {
+    const f = document.querySelector('[data-f="' + key + '"]');
+    if (!f) return;
+    if (msg) { const e = f.querySelector(".err"); if (e) e.textContent = msg; }
+    setInvalid(f, isBad);
+    if (isBad) bad.push(f);
+  };
+  const emailOk = v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+  const uoflOk = v => /^[^\s@]+@louisville\.edu$/i.test(v);
+  const person = p => {
+    const x = readPerson(p);
+    mark(p + "-name", x.name.length < 2);
+    mark(p + "-aff", !x.aff);
+    if (x.aff === "UofL") {
+      mark(p + "-uoflEmail", !uoflOk(x.uoflEmail));
+      mark(p + "-sid", !x.sid);
+    }
+    if (x.aff === "Non-UofL") mark(p + "-email", !emailOk(x.email));
+    mark(p + "-phone", !phoneOk(x.phone));
+    mark(p + "-food", !x.food);
+  };
+  person("me");
+  guests.forEach(person);
+  kids.forEach(p => {
+    const k = readKid(p);
+    mark(p + "-name", !k.name);
+    const tooOld = k.age !== null && k.age >= 18;
+    mark(p + "-age", !kidAgeOk(k.age), tooOld ? "18 or older counts as an adult. Remove this child and add them as a guest." : "Enter an age from 0 to 17.");
+    mark(p + "-food", !k.food);
+  });
+  mark("zelleRef", !$("#zelleRef").value.trim());
+  mark("shot", !upload, preparing ? "Your screenshot is still loading. Wait a moment, then press Register." : "Upload a screenshot of your Zelle payment.");
+  mark("waiver", !$("#waiver").checked);
+  mark("photo", !radio("photo"));
+  return bad;
+}
+
+/* ---------------- submit ---------------- */
+function buildPayload() {
+  const t = payTier || shownTier;
+  return {
+    ref: REF,
+    hp: $("#hp").value,
+    tierShown: t,
+    amountShown: computeBill(t).total,
+    me: readPerson("me"),
+    guests: guests.map(readPerson),
+    kids: kids.map(readKid),
+    notes: $("#notes").value.trim(),
+    zelleRef: $("#zelleRef").value.trim(),
+    waiver: $("#waiver").checked,
+    photo: radio("photo"),
+    file: upload ? { name: upload.name, mime: upload.mime, data: upload.data } : null
+  };
+}
+function paidNote() {
+  const z = $("#zelleRef").value.trim();
+  if (!z && !upload) return "";
+  return "If you already sent a Zelle payment, " + CONTACT + (z ? " with your Zelle confirmation " + z : "") + " and we will sort it out.";
+}
+
+$("#reg").addEventListener("submit", async function (e) {
+  e.preventDefault();
+  const box = $("#formErr");
+  const btn = $("#submitBtn");
+  if (currentTier() === "Closed") { showClosed(); return; }
+  if (pendingFile) { btn.disabled = true; await pendingFile; btn.disabled = false; }
+  const bad = validate();
+  if (bad.length) {
+    box.hidden = false;
+    box.textContent = bad.length === 1
+      ? "1 detail still needs attention. We've taken you to it."
+      : bad.length + " details still need attention. We've taken you to the first one.";
+    const first = bad[0];
+    first.scrollIntoView({ behavior: scrollMode(), block: "center" });
+    const inp = first.querySelector("input:not([type=radio]), textarea, input[type=radio]");
+    if (inp) inp.focus({ preventScroll: true });
+    return;
+  }
+  box.hidden = true;
+  const payload = buildPayload();
+  if (!LIVE) {
+    showDone(payload, { ok: true, ref: payload.ref, amountDue: computeBill(shownTier).total, tier: shownTier });
+    return;
+  }
+  btn.disabled = true;
+  btn.textContent = "Sending...";
+  try {
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), 120000);
+    /* text/plain keeps this a CORS simple request (no preflight, which Apps
+       Script cannot answer). The /exec URL redirects to googleusercontent,
+       and both hops allow any origin, so the JSON reply is readable. */
+    const res = await fetch(ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify(payload),
+      redirect: "follow",
+      signal: ctrl.signal
+    });
+    clearTimeout(timer);
+    let out = null;
+    try { out = await res.json(); } catch (x) { out = null; }
+    if (!out || !out.ok) {
+      const err = new Error(out && out.userError ? out.error : "save failed");
+      err.user = !!(out && out.userError);
+      err.closed = !!(out && out.closed);
+      throw err;
+    }
+    showDone(payload, out);
+  } catch (err) {
+    box.hidden = false;
+    if (err && err.closed) {
+      box.textContent = "Registration closed on Thursday 22 October at 11:59 PM, so this could not be saved. " + paidNote();
+    } else if (err && err.name === "AbortError") {
+      box.textContent = "This is taking too long. Don't reload the page. Check your connection, then press Register again. It won't register you twice.";
+    } else if (err && err.user) {
+      box.textContent = err.message;
+    } else {
+      box.textContent = "We couldn't save your registration. Don't reload the page. Check your connection and press Register again. If it keeps failing, " + CONTACT + ".";
+    }
+    btn.disabled = false;
+    btn.textContent = "Register";
+    box.scrollIntoView({ behavior: scrollMode(), block: "center" });
+  }
+});
+
+function showDone(payload, out) {
+  const amount = typeof out.amountDue === "number" ? out.amountDue : payload.amountShown;
+  const ref = out.ref || payload.ref;
+  const first = (payload.me.name || "").split(" ")[0] || "friend";
+  $("#doneRef").textContent = ref;
+  $("#doneAmt").textContent = "$" + amount;
+  const n = 1 + payload.guests.length + payload.kids.length;
+  $("#doneLede").textContent = (n === 1 ? first + ", you're registered" : first + ", your group of " + n + " is registered") +
+    " for Dandiya Night. See you on the dance floor!";
+  const tier = PRICES[out.tier] ? out.tier : shownTier;
+  const priceOf = x => PRICES[tier] ? PRICES[tier][x.aff] : 0;
+  let items = '<li>' + esc(payload.me.name) + '<span>You, ' + money(priceOf(payload.me)) + '</span></li>';
+  payload.guests.forEach(g => { items += '<li>' + esc(g.name) + '<span>Guest, ' + money(priceOf(g)) + '</span></li>'; });
+  payload.kids.forEach(k => { items += '<li>' + esc(k.name) + '<span>Child, ' + money(childPrice(k.age)) + '</span></li>'; });
+  $("#doneParty").innerHTML = items;
+  const diff = amount - payload.amountShown;
+  const note = $("#doneDiff");
+  if (diff > 0) {
+    note.hidden = false;
+    note.textContent = "Early bird ended before your registration reached us, so your total is $" + amount + ", not $" + payload.amountShown +
+      ". Please Zelle the $" + diff + " difference to Junead with " + ref + " in the note.";
+  } else if (diff < 0) {
+    note.hidden = false;
+    note.textContent = "Your total is $" + amount + ". If you sent $" + payload.amountShown + ", IGSA will refund the $" + (-diff) +
+      " difference. Quote " + ref + ".";
+  } else {
+    note.hidden = true;
+  }
+  $("#previewNote").hidden = LIVE;
+  $("#app").hidden = true;
+  $("#done").hidden = false;
+  window.scrollTo(0, 0);
+  $("#doneH").focus({ preventScroll: true });
+  confetti();
+}
+
+function showClosed() {
+  const msg = paidNote();
+  const paid = $("#closedPaid");
+  paid.textContent = msg;
+  paid.hidden = !msg;
+  const wasOpen = !$("#reg").hidden;
+  $("#closed").hidden = false;
+  $("#reg").hidden = true;
+  $("#notices").hidden = true;
+  $("#tickets").hidden = true;
+  $("#countdown").hidden = true;
+  if (wasOpen && document.readyState === "complete") $("#closed h2").focus();
+}
+
+/* ---------------- countdown ---------------- */
+let cutoffTimer = null;
+function tick() {
+  const tier = currentTier();
+  if (tier !== lastTier) { lastTier = tier; update(); }
+  if (tier === "Closed") { showClosed(); return; }
+  const target = tier === "Early bird" ? EARLY_END : REG_CLOSE;
+  const ms = target - new Date();
+  const d = Math.floor(ms / 86400000);
+  const h = Math.floor((ms % 86400000) / 3600000);
+  const m = Math.floor((ms % 3600000) / 60000);
+  $("#cdLabel").textContent = tier === "Early bird" ? "Early bird ends in" : "Registration closes in";
+  $("#cdVal").textContent = d > 0 ? d + "d " + h + "h" : h + "h " + m + "m";
+  /* Flip the prices at the cutoff itself, not up to 30 s later. Browsers
+     cap setTimeout near 24.8 days, so only arm it when the cutoff is near. */
+  clearTimeout(cutoffTimer);
+  if (ms < 86400000) cutoffTimer = setTimeout(tick, ms + 1000);
+}
+
+/* ---------------- confetti ---------------- */
+function confetti() {
+  if (reduceMotion()) return;
+  const c = document.createElement("canvas");
+  c.className = "confetti";
+  c.setAttribute("aria-hidden", "true");
+  document.body.appendChild(c);
+  const ctx = c.getContext("2d");
+  const dpr = Math.min(2, window.devicePixelRatio || 1);
+  const W = c.width = window.innerWidth * dpr;
+  const H = c.height = window.innerHeight * dpr;
+  const colors = ["#D6115F", "#FF8C1A", "#FFC93C", "#0E8FA0", "#2FA35B", "#FF4D8D", "#7A3E9D"];
+  const parts = [];
+  for (let i = 0; i < 150; i++) {
+    parts.push({
+      x: W / 2 + (Math.random() - 0.5) * W * 0.4, y: H * 0.3,
+      vx: (Math.random() - 0.5) * 16 * dpr, vy: (-Math.random() * 15 - 5) * dpr,
+      s: (5 + Math.random() * 6) * dpr, r: Math.random() * 6.28, vr: (Math.random() - 0.5) * 0.3,
+      c: colors[i % colors.length], round: i % 3 === 0
+    });
+  }
+  let t0 = 0;
+  function frame(t) {
+    if (!t0) t0 = t;
+    ctx.clearRect(0, 0, W, H);
+    parts.forEach(p => {
+      p.vy += 0.38 * dpr; p.vx *= 0.99; p.x += p.vx; p.y += p.vy; p.r += p.vr;
+      ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.r); ctx.fillStyle = p.c;
+      if (p.round) { ctx.beginPath(); ctx.arc(0, 0, p.s / 2, 0, 6.283); ctx.fill(); }
+      else ctx.fillRect(-p.s / 2, -p.s / 4, p.s, p.s / 2);
+      ctx.restore();
+    });
+    if (t - t0 < 3400) requestAnimationFrame(frame); else c.remove();
+  }
+  requestAnimationFrame(frame);
+}
+
+/* ---------------- events ---------------- */
+/* Once every flagged field is fixed, drop the "needs attention" banner. */
+function clearFormErr() {
+  const box = $("#formErr");
+  if (!box.hidden && /attention/.test(box.textContent) && !document.querySelector(".field.invalid")) box.hidden = true;
+}
+document.addEventListener("change", function () { setTimeout(clearFormErr, 0); });
+document.addEventListener("input", function () { setTimeout(clearFormErr, 0); });
+document.addEventListener("change", function (e) {
+  const t = e.target;
+  if (!t || (!t.name && !t.id)) return;
+  if (t.name && /-aff$/.test(t.name)) { onAff(t.name.replace(/-aff$/, "")); return; }
+  if (t.name && /-food$/.test(t.name)) {
+    setInvalid(t.closest(".field"), false);
+    update(); return;
+  }
+  if (t.id === "shot") { takeFile(t.files && t.files[0]); return; }
+  if (t.id === "waiver" || t.name === "photo") setInvalid(t.closest(".field"), false);
+});
+document.addEventListener("input", function (e) {
+  const f = e.target.closest && e.target.closest(".field");
+  if (f && e.target.type !== "radio") setInvalid(f, false);
+  if (e.target.id === "zelleRef" && e.target.value.trim()) markPaying();
+  if (e.target.dataset && (e.target.dataset.k === "name" || e.target.dataset.k === "age")) update();
+});
+document.addEventListener("click", function (e) {
+  const b = e.target.closest && e.target.closest("[data-act]");
+  if (!b) return;
+  const act = b.dataset.act;
+  if (act === "add-guest") addGuest();
+  else if (act === "add-kid") addKid();
+  else if (act === "remove") removeCard(b.closest(".pcard").dataset.p);
+  else if (act === "change-file") $("#shot").click();
+  else if (act === "again") location.reload();
+});
+
+/* A file dropped anywhere else must not make the browser open it and lose the form. */
+document.addEventListener("dragover", e => e.preventDefault());
+document.addEventListener("drop", e => e.preventDefault());
+const shotField = $('[data-f="shot"]');
+["dragenter", "dragover"].forEach(ev => shotField.addEventListener(ev, e => { e.preventDefault(); $("#drop").classList.add("over"); }));
+["dragleave", "drop"].forEach(ev => shotField.addEventListener(ev, e => { e.preventDefault(); $("#drop").classList.remove("over"); }));
+shotField.addEventListener("drop", e => { const f = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0]; takeFile(f); });
+
+/* ---------------- start ---------------- */
+/* Some browsers restore ticked boxes and typed text on reload. Start clean,
+   so a second group never inherits the first group's waiver or notes. */
+$("#reg").reset();
+$("#me-card").innerHTML = personFields("me", true);
+if (currentTier() === "Closed") showClosed();
+else { update(); tick(); setInterval(tick, 30000); }
+})();
+</script>
+</body>
+</html>
