@@ -92,6 +92,7 @@ a{color:var(--accent);text-underline-offset:2px}
 button,input,select,textarea{font:inherit;color:inherit}
 :focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:6px}
 .mast :focus-visible,.done :focus-visible{outline-color:#FFC93C}
+.done .receipt :focus-visible{outline-color:var(--focus)}
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{animation:none !important;transition:none !important;scroll-behavior:auto !important}
 }
@@ -221,6 +222,26 @@ h1{
 .notice p{margin:0;font-size:15px;color:var(--ink-2)}
 .notice b{color:var(--ink)}
 
+/* ============================ ABOUT ============================ */
+.about{
+  margin:22px 0 0;padding:18px;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r);box-shadow:var(--shadow);
+}
+.about h2{margin:0 0 12px;font-family:var(--display);font-weight:400;font-size:26px;line-height:1.1}
+.about-grid{display:grid;gap:12px}
+@media (min-width:640px){.about-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.about-item{padding:12px 14px;border-radius:var(--r-sm);background:var(--surface-2);box-shadow:inset 4px 0 0 var(--c)}
+.about-item h3{margin:0 0 4px;font-size:15.5px;font-weight:700;color:var(--ink)}
+.about-item p{margin:0;font-size:14.5px;color:var(--ink-2);line-height:1.5}
+.flow{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 0;padding:0;list-style:none;counter-reset:f}
+.flow li{
+  flex:1 1 170px;display:flex;flex-direction:column;gap:1px;padding:9px 12px 7px;border-radius:12px;
+  border:1.5px dashed var(--line-strong);counter-increment:f;
+}
+.flow li b{font-family:var(--display);font-weight:400;font-size:19px;line-height:1.15}
+.flow li b::before{content:counter(f) ". ";color:var(--accent)}
+.flow li span{font-size:13.5px;color:var(--ink-2)}
+
 /* ============================ TICKETS ============================ */
 .tickets{
   margin:22px 0 0;background:var(--surface);border:1px solid var(--line);
@@ -291,7 +312,7 @@ textarea{resize:vertical;min-height:84px}
 .err{display:none;font-size:13.5px;font-weight:600;color:var(--err)}
 .field.invalid .err{display:block}
 .field.invalid input[type="text"],.field.invalid input[type="email"],
-.field.invalid input[type="tel"],.field.invalid input[type="number"]{border-color:var(--err);background:color-mix(in srgb, var(--err) 6%, var(--field))}
+.field.invalid input[type="tel"],.field.invalid input[type="number"],.field.invalid textarea{border-color:var(--err);background:color-mix(in srgb, var(--err) 6%, var(--field))}
 .field.invalid .seg label{border-color:var(--err)}
 
 /* segmented choices */
@@ -307,6 +328,11 @@ textarea{resize:vertical;min-height:84px}
 .seg label:has(input:checked){background:var(--ink);border-color:var(--ink);color:var(--bg)}
 .seg label:has(input:focus-visible){outline:3px solid var(--focus);outline-offset:2px}
 .seg.aff label:has(input:checked){background:var(--rani);border-color:var(--rani);color:#fff}
+.seg.multi label:has(input:checked)::before{content:"\2713";font-weight:700}
+@media (forced-colors: active){
+  .seg label:has(input:checked){forced-color-adjust:none;background:Highlight;color:HighlightText;border-color:Highlight}
+}
+.opt{font-weight:500;color:var(--ink-3)}
 .vsym{
   flex:none;display:inline-grid;place-items:center;width:16px;height:16px;
   border:2px solid;border-radius:3px;background:#fff;
@@ -324,6 +350,7 @@ textarea{resize:vertical;min-height:84px}
 }
 .pcard-head{
   display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;padding:10px 12px 9px 20px;
+  box-shadow:inset 5px 0 0 var(--c, var(--rani));
   background:var(--surface-2);border-bottom:1px solid var(--line);
 }
 .pc-title{font-family:var(--display);font-size:19px;line-height:1.1}
@@ -354,7 +381,7 @@ textarea{resize:vertical;min-height:84px}
 
 /* ============================ DINNER ============================ */
 .tally{display:flex;flex-wrap:wrap;gap:10px}
-.tally span{
+.tally > span{
   display:inline-flex;align-items:center;gap:8px;padding:8px 14px 6px;border-radius:12px;
   background:var(--surface-2);border:1px solid var(--line);font-weight:600;font-size:15px;
 }
@@ -425,6 +452,7 @@ textarea{resize:vertical;min-height:84px}
   border:1.5px solid var(--line-strong);background:var(--field);
 }
 .check:has(input:checked){border-color:var(--good);background:color-mix(in srgb, var(--good) 8%, var(--field))}
+.check:has(input:focus-visible){outline:3px solid var(--focus);outline-offset:2px}
 .check input{flex:none;width:20px;height:20px;margin:1px 0 0;accent-color:var(--rani);cursor:pointer}
 .check span{font-size:15px;font-weight:600;line-height:1.4}
 .field.invalid .check{border-color:var(--err)}
@@ -604,13 +632,36 @@ footer a{font-weight:700;text-decoration:none;white-space:nowrap}
       </div>
       <div class="notice">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z" fill="#FF8C1A"/></svg>
-        <p><b>Dress code is ethnic wear.</b> Wear your Indian best, or the traditional dress of your own culture: African, Vietnamese, any heritage you want to celebrate.</p>
+        <p><b>Dress code is ethnic wear.</b> Wear Indian ethnic wear, or the traditional dress of your own culture: African, Vietnamese, Chinese, Korean, Mexican, Middle Eastern, Nepali, Filipino, or any heritage you want to celebrate. No traditional outfit? Anything festive and colourful is perfect.</p>
       </div>
       <div class="notice">
         <svg viewBox="0 0 24 24" fill="none" stroke="#0E8FA0" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5"/><circle cx="17" cy="9" r="2.6"/><path d="M15.5 14.2c2.3.2 4.2 1.8 4.8 4.8"/></svg>
         <p><b>One registration covers your whole group.</b> Add your guests and children below and pay once.</p>
       </div>
     </div>
+
+    <section class="about" id="about" aria-labelledby="about-h">
+      <h2 id="about-h">New to Dandiya?</h2>
+      <div class="about-grid">
+        <div class="about-item" style="--c:var(--rani)">
+          <h3>What it is</h3>
+          <p>Dandiya raas is a folk dance from Gujarat in western India. It is danced during Navratri, a nine-night festival held each autumn.</p>
+        </div>
+        <div class="about-item" style="--c:var(--marigold)">
+          <h3>How it works</h3>
+          <p>Dancers form two lines or circles and tap a pair of painted wooden sticks, the dandiya, against a partner's sticks in time with the music, then move on to the next partner.</p>
+        </div>
+        <div class="about-item" style="--c:var(--peacock)">
+          <h3>Never danced it?</h3>
+          <p>That's fine. We'll teach the steps on the day, and the pattern repeats, so you can join the circle and follow along.</p>
+        </div>
+      </div>
+      <ol class="flow" aria-label="How the evening runs">
+        <li><b>Dinner</b><span>A full dinner to start the evening</span></li>
+        <li><b>Dandiya raas</b><span>Sticks in hand, in the circle</span></li>
+        <li><b>Bollywood night</b><span>Dancing to Hindi film hits to close</span></li>
+      </ol>
+    </section>
 
     <section class="tickets" id="tickets" aria-labelledby="tk-h">
       <div class="tk-head">
@@ -638,7 +689,7 @@ footer a{font-weight:700;text-decoration:none;white-space:nowrap}
     </section>
 
     <form id="reg" novalidate autocomplete="off">
-      <p class="req-note">Fields marked <span class="req" aria-hidden="true">*</span> are required.</p>
+      <p class="req-note">Fields marked <span class="req" aria-hidden="true">&#8288;*</span><span class="sr">with an asterisk</span> are required.</p>
 
       <!-- 1 YOU -->
       <section class="stage">
@@ -677,10 +728,23 @@ footer a{font-weight:700;text-decoration:none;white-space:nowrap}
         <div class="stage-body">
           <p class="lead">Full dinner is served to everyone. Here is your group's order from the choices above.</p>
           <div class="tally" id="tally"></div>
-          <div class="field" data-f="notes">
-            <label class="lbl" for="notes">Food allergies or dietary notes</label>
-            <textarea id="notes" maxlength="600" autocomplete="off" placeholder="For example: nut allergy for one guest, no onion or garlic."></textarea>
-            <p class="hint">Optional. Tell us about allergies for anyone in your group.</p>
+          <div class="field" data-f="allergy">
+            <span class="lbl" id="allergyLbl">Does anyone in your group have a food allergy?<span class="req" aria-hidden="true">&#8288;*</span></span>
+            <div class="seg" role="radiogroup" aria-labelledby="allergyLbl" aria-required="true">
+              <label><input type="radio" name="allergy" value="No" autocomplete="off">No</label>
+              <label><input type="radio" name="allergy" value="Yes" autocomplete="off">Yes</label>
+            </div>
+            <span class="err" id="allergy-err">Choose Yes or No.</span>
+          </div>
+          <div class="field" data-f="allergyNote" id="allergyWrap" hidden>
+            <label class="lbl" for="allergyNote">Who is allergic, and to what?<span class="req" aria-hidden="true">&#8288;*</span></label>
+            <textarea id="allergyNote" maxlength="600" autocomplete="off" aria-required="true" placeholder="For example: Leo (child), peanuts and tree nuts."></textarea>
+            <span class="err" id="allergyNote-err">Tell us who has the allergy and what they are allergic to.</span>
+          </div>
+          <div class="field" data-f="dietary">
+            <label class="lbl" for="dietary">Any other dietary needs? <span class="opt">(optional)</span></label>
+            <input id="dietary" type="text" maxlength="300" autocomplete="off" data-desc="dietary-hint" aria-describedby="dietary-hint" placeholder="For example: Jain food, no onion or garlic">
+            <p class="hint" id="dietary-hint">We'll do our best to accommodate these, but we can't guarantee it.</p>
           </div>
         </div>
       </section>
@@ -703,12 +767,12 @@ footer a{font-weight:700;text-decoration:none;white-space:nowrap}
             </div>
           </div>
           <div class="field" data-f="zelleRef">
-            <label class="lbl" for="zelleRef">Zelle confirmation number<span class="req" aria-hidden="true">*</span></label>
+            <label class="lbl" for="zelleRef">Zelle confirmation number<span class="req" aria-hidden="true">&#8288;*</span></label>
             <input id="zelleRef" type="text" maxlength="60" autocomplete="off" aria-required="true" placeholder="From your Zelle payment receipt">
-            <span class="err">Enter the confirmation number from your Zelle payment.</span>
+            <span class="err" id="zelleRef-err">Enter the confirmation number from your Zelle payment.</span>
           </div>
           <div class="field" data-f="shot">
-            <span class="lbl" id="shotLbl">Screenshot of your Zelle payment<span class="req" aria-hidden="true">*</span></span>
+            <span class="lbl" id="shotLbl">Screenshot of your Zelle payment<span class="req" aria-hidden="true">&#8288;*</span><span class="sr"> (required)</span></span>
             <input type="file" id="shot" class="sr-file" accept="image/*,application/pdf" aria-labelledby="shotLbl" aria-required="true">
             <label class="drop" id="drop" for="shot">
               <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="9" width="36" height="30" rx="5" fill="none" stroke="#D6115F" stroke-width="3"/><circle cx="17" cy="19" r="3.5" fill="#FFC93C"/><path d="M9 35l10-10 7 7 5-5 8 8" fill="none" stroke="#0E8FA0" stroke-width="3" stroke-linejoin="round"/></svg>
@@ -732,24 +796,49 @@ footer a{font-weight:700;text-decoration:none;white-space:nowrap}
             <ol>
               <li>I am attending IGSA Dandiya Night 2026 voluntarily. Dandiya raas and Bollywood dancing are physical activities that involve swinging sticks and moving in crowded circles, and I understand they carry a risk of injury.</li>
               <li>I accept responsibility for my own health and safety, and for the guests and children I am registering. Children must stay with a registered adult at all times.</li>
-              <li>Dinner is prepared for a large group. I will list food allergies in the dinner notes, and I understand the organizers cannot guarantee allergen-free food.</li>
+              <li>Dinner is prepared for a large group. I have listed food allergies in the dinner section, and I understand the organizers cannot guarantee allergen-free food.</li>
               <li>I release the Indian Graduate Student Association, the University of Louisville, the Miller Information Technology Center and the event volunteers from liability for any injury, illness, or loss of or damage to property arising from the event.</li>
               <li>I will follow venue rules and organizer instructions. I understand the organizers may refuse entry to, or ask to leave, anyone behaving unsafely or disrespectfully.</li>
               <li>My guests have agreed to these terms, and I am the parent or guardian of the children I am registering, or I have their parent's or guardian's permission.</li>
             </ol>
           </div>
           <div class="field" data-f="waiver">
-            <label class="check"><input type="checkbox" id="waiver" autocomplete="off" aria-required="true"><span>I have read and accept the waiver, for myself, my guests and the children I am registering.</span></label>
-            <span class="err">Accept the waiver to register.</span>
+            <label class="check"><input type="checkbox" id="waiver" autocomplete="off" required><span>I have read and accept the waiver, for myself, my guests and the children I am registering.</span></label>
+            <span class="err" id="waiver-err">Accept the waiver to register.</span>
           </div>
           <div class="field" data-f="photo">
-            <span class="lbl" id="photoLbl">Photos and videos<span class="req" aria-hidden="true">*</span></span>
-            <p class="hint">IGSA photographs the evening for its social media.</p>
+            <span class="lbl" id="photoLbl">Photos and videos<span class="req" aria-hidden="true">&#8288;*</span></span>
+            <p class="hint">IGSA photographs the evening for its social media. If you choose no, we'll do our best to keep your group out of the photos we post, but in a busy room we can't guarantee it.</p>
             <div class="seg" role="radiogroup" aria-labelledby="photoLbl" aria-required="true">
               <label><input type="radio" name="photo" value="Yes" autocomplete="off">Yes, that's fine</label>
               <label><input type="radio" name="photo" value="No" autocomplete="off">Please don't post photos of my group</label>
             </div>
-            <span class="err">Choose one.</span>
+            <span class="err" id="photo-err">Choose one.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7 HOW THEY HEARD -->
+      <section class="stage">
+        <div class="stage-head"><span class="num" style="--c:var(--rani-soft);color:#2A0E3F">7</span><h2>One last thing</h2></div>
+        <div class="stage-body">
+          <div class="field" data-f="heard">
+            <span class="lbl" id="heardLbl">How did you hear about Dandiya Night?<span class="req" aria-hidden="true">&#8288;*</span><span class="sr"> (required, pick all that apply)</span></span>
+            <p class="hint" aria-hidden="true">Pick all that apply.</p>
+            <div class="seg multi" role="group" aria-labelledby="heardLbl">
+              <label><input type="checkbox" name="heard" value="Instagram" autocomplete="off">Instagram</label>
+              <label><input type="checkbox" name="heard" value="WhatsApp" autocomplete="off">WhatsApp</label>
+              <label><input type="checkbox" name="heard" value="Email" autocomplete="off">Email</label>
+              <label><input type="checkbox" name="heard" value="Friends or family" autocomplete="off">Friends or family</label>
+              <label><input type="checkbox" name="heard" value="Flyer or poster" autocomplete="off">Flyer or poster</label>
+              <label><input type="checkbox" name="heard" value="Other" autocomplete="off">Other</label>
+            </div>
+            <span class="err" id="heard-err">Pick at least one.</span>
+          </div>
+          <div class="field" data-f="heardOther" id="heardOtherWrap" hidden>
+            <label class="lbl" for="heardOther">Where did you hear about it?<span class="req" aria-hidden="true">&#8288;*</span></label>
+            <input id="heardOther" type="text" maxlength="80" autocomplete="off" aria-required="true" placeholder="For example: a professor, LinkedIn, a class announcement">
+            <span class="err" id="heardOther-err">Tell us where you heard about it.</span>
           </div>
         </div>
       </section>
@@ -853,7 +942,10 @@ let fileSeq = 0;
 let pendingFile = null;
 let lastTier = currentTier();
 let shownTier = lastTier;   /* the price window the page is showing */
-let payTier = null;         /* the window showing when they started paying */
+let flipped = false;        /* early bird ended while this page was open */
+let sending = false;
+let lateSent = false;
+const openAtLoad = lastTier !== "Closed";
 let lastTally = "";
 
 function currentTier() {
@@ -875,7 +967,7 @@ function foodSeg(p) {
     '<label><input type="radio" name="' + p + '-food" value="Veg"><span class="vsym veg" aria-hidden="true"></span>Veg</label>' +
     '<label><input type="radio" name="' + p + '-food" value="Non-veg"><span class="vsym nonveg" aria-hidden="true"></span>Non-veg</label></div>';
 }
-const REQ = '<span class="req" aria-hidden="true">*</span>';
+const REQ = '<span class="req" aria-hidden="true">&#8288;*</span>';
 function textField(p, k, label, type, err, extra) {
   const id = p + "-" + k;
   return '<div class="field" data-f="' + id + '">' +
@@ -934,6 +1026,7 @@ function kidCard(p, n, color) {
 function card(p) { return document.getElementById(p + "-card"); }
 function val(root, k) { const el = root && root.querySelector('[data-k="' + k + '"]'); return el ? el.value.trim() : ""; }
 function radio(name) { const el = document.querySelector('input[name="' + name + '"]:checked'); return el ? el.value : ""; }
+function checkedValues(name) { return Array.from(document.querySelectorAll('input[name="' + name + '"]:checked')).map(el => el.value); }
 
 /* Only the fields that match the chosen affiliation are ever read. */
 function readPerson(p) {
@@ -1002,6 +1095,7 @@ function computeBill(tier) {
 function update() {
   const tier = currentTier();
   if (tier === "Closed") return;
+  if (shownTier === "Early bird" && tier === "Regular") flipped = true;
   shownTier = tier;
 
   guests.forEach((p, i) => {
@@ -1055,13 +1149,14 @@ function update() {
   $("#barTotal").textContent = "$" + b.total;
   $("#barNote").textContent = b.people + (b.people === 1 ? " person" : " people") + (b.complete ? "" : ", details missing");
 
-  /* The price window changed after they started paying. */
+  /* Early bird ended while the page was open. They may already have paid
+     the early-bird amount, so say what to do either way. */
   const note = $("#tierNote");
-  if (payTier && payTier !== tier && b.complete) {
-    const paid = computeBill(payTier).total;
-    note.hidden = paid === b.total;
-    note.textContent = "Early bird ended while you were registering, so your total is now $" + b.total +
-      ". If you already sent $" + paid + ", send the $" + (b.total - paid) + " difference to Junead as well.";
+  const early = flipped && b.complete ? computeBill("Early bird").total : null;
+  if (early !== null && early !== b.total) {
+    note.hidden = false;
+    note.textContent = "Early bird ended at 11:59 PM on Thursday 15 October while this page was open, so your total is now $" + b.total +
+      ". If you already sent $" + early + ", send Junead the $" + (b.total - early) + " difference. If you haven't paid yet, send $" + b.total + ".";
   } else {
     note.hidden = true;
   }
@@ -1076,12 +1171,6 @@ function update() {
     '<span><span class="vsym nonveg" aria-hidden="true"></span>Non-veg <b>' + non + '</b></span>' +
     (open ? '<span>Still to choose <b>' + open + '</b></span>' : "");
   if (tally !== lastTally) { $("#tally").innerHTML = tally; lastTally = tally; }
-}
-
-/* Lock in the price window once they start paying, so a later tier change
-   is flagged instead of silently raising what they were told to send. */
-function markPaying() {
-  if (!payTier && shownTier !== "Closed") payTier = shownTier;
 }
 
 /* ---------------- add / remove people ---------------- */
@@ -1202,7 +1291,6 @@ async function onFile(file) {
     const up = await prepareFile(file);
     if (my !== fileSeq) return;           /* a newer file was chosen meanwhile */
     upload = up;
-    markPaying();
     status.textContent = "Screenshot ready: " + file.name + ", " + fmtSize(up.bytes) + ".";
     $("#pvThumb").innerHTML = up.preview
       ? '<img src="' + up.preview + '" alt="Your Zelle screenshot">'
@@ -1232,13 +1320,19 @@ function setInvalid(f, bad) {
   if (!f) return;
   f.classList.toggle("invalid", !!bad);
   const err = f.querySelector(".err");
-  f.querySelectorAll('input:not([type=radio]), textarea, [role=radiogroup]').forEach(c => {
+  const groups = f.querySelectorAll("[role=radiogroup], [role=group]");
+  const ctrls = groups.length
+    ? Array.from(groups).concat(Array.from(f.querySelectorAll("[role=radiogroup] input, [role=group] input")))
+    : Array.from(f.querySelectorAll("input:not([type=radio]), textarea"));
+  ctrls.forEach(c => {
+    const base = c.dataset.desc || "";
     if (bad) {
       c.setAttribute("aria-invalid", "true");
-      if (err && err.id) c.setAttribute("aria-describedby", err.id);
+      const d = (base + " " + (err && err.id ? err.id : "")).trim();
+      if (d) c.setAttribute("aria-describedby", d);
     } else {
       c.removeAttribute("aria-invalid");
-      c.removeAttribute("aria-describedby");
+      if (base) c.setAttribute("aria-describedby", base); else c.removeAttribute("aria-describedby");
     }
   });
 }
@@ -1275,25 +1369,36 @@ function validate() {
     mark(p + "-age", !kidAgeOk(k.age), tooOld ? "18 or older counts as an adult. Remove this child and add them as a guest." : "Enter an age from 0 to 17.");
     mark(p + "-food", !k.food);
   });
+  const allergy = radio("allergy");
+  mark("allergy", !allergy);
+  if (allergy === "Yes") mark("allergyNote", !$("#allergyNote").value.trim());
   mark("zelleRef", !$("#zelleRef").value.trim());
   mark("shot", !upload, preparing ? "Your screenshot is still loading. Wait a moment, then press Register." : "Upload a screenshot of your Zelle payment.");
   mark("waiver", !$("#waiver").checked);
   mark("photo", !radio("photo"));
+  const heard = checkedValues("heard");
+  mark("heard", !heard.length);
+  if (heard.indexOf("Other") !== -1) mark("heardOther", !$("#heardOther").value.trim());
   return bad;
 }
 
 /* ---------------- submit ---------------- */
 function buildPayload() {
-  const t = payTier || shownTier;
   return {
     ref: REF,
     hp: $("#hp").value,
-    tierShown: t,
-    amountShown: computeBill(t).total,
+    tierShown: shownTier,
+    amountShown: computeBill(shownTier).total,
+    tierFlipped: flipped,
+    earlyTotal: flipped ? computeBill("Early bird").total : null,
     me: readPerson("me"),
     guests: guests.map(readPerson),
     kids: kids.map(readKid),
-    notes: $("#notes").value.trim(),
+    allergy: radio("allergy"),
+    allergyNote: radio("allergy") === "Yes" ? $("#allergyNote").value.trim() : "",
+    dietary: $("#dietary").value.trim(),
+    heard: checkedValues("heard"),
+    heardOther: checkedValues("heard").indexOf("Other") !== -1 ? $("#heardOther").value.trim() : "",
     zelleRef: $("#zelleRef").value.trim(),
     waiver: $("#waiver").checked,
     photo: radio("photo"),
@@ -1301,16 +1406,33 @@ function buildPayload() {
   };
 }
 function paidNote() {
+  if (!openAtLoad) return "";
   const z = $("#zelleRef").value.trim();
-  if (!z && !upload) return "";
-  return "If you already sent a Zelle payment, " + CONTACT + (z ? " with your Zelle confirmation " + z : "") + " and we will sort it out.";
+  if (z) return "If you already sent a Zelle payment, " + CONTACT + " with your Zelle confirmation " + z + " and we'll sort it out.";
+  return "If you sent a Zelle payment but didn't finish registering, " + CONTACT + " with the amount and the time you sent it, and we'll sort it out.";
+}
+
+/* Someone who paid just before the close still reaches the server, which
+   either finds their saved registration or logs them under Late attempts. */
+function reportLate() {
+  if (!LIVE || lateSent) return;
+  if (!$("#zelleRef").value.trim() && !upload) return;
+  lateSent = true;
+  const payload = Object.assign(buildPayload(), { file: null });
+  fetch(ENDPOINT, {
+    method: "POST",
+    headers: { "Content-Type": "text/plain;charset=utf-8" },
+    body: JSON.stringify(payload),
+    redirect: "follow"
+  }).then(r => r.json()).then(out => { if (out && out.ok) showDone(payload, out); }).catch(() => {});
 }
 
 $("#reg").addEventListener("submit", async function (e) {
   e.preventDefault();
   const box = $("#formErr");
   const btn = $("#submitBtn");
-  if (currentTier() === "Closed") { showClosed(); return; }
+  if (sending) return;
+  if (currentTier() === "Closed") { reportLate(); showClosed(); return; }
   if (pendingFile) { btn.disabled = true; await pendingFile; btn.disabled = false; }
   const bad = validate();
   if (bad.length) {
@@ -1332,6 +1454,7 @@ $("#reg").addEventListener("submit", async function (e) {
   }
   btn.disabled = true;
   btn.textContent = "Sending...";
+  sending = true;
   try {
     const ctrl = new AbortController();
     const timer = setTimeout(() => ctrl.abort(), 120000);
@@ -1354,11 +1477,15 @@ $("#reg").addEventListener("submit", async function (e) {
       err.closed = !!(out && out.closed);
       throw err;
     }
+    sending = false;
     showDone(payload, out);
   } catch (err) {
+    sending = false;
     box.hidden = false;
     if (err && err.closed) {
-      box.textContent = "Registration closed on Thursday 22 October at 11:59 PM, so this could not be saved. " + paidNote();
+      lateSent = true;
+      showClosed();
+      return;
     } else if (err && err.name === "AbortError") {
       box.textContent = "This is taking too long. Don't reload the page. Check your connection, then press Register again. It won't register you twice.";
     } else if (err && err.user) {
@@ -1373,6 +1500,9 @@ $("#reg").addEventListener("submit", async function (e) {
 });
 
 function showDone(payload, out) {
+  lateSent = true;
+  clearInterval(tickTimer);
+  clearTimeout(cutoffTimer);
   const amount = typeof out.amountDue === "number" ? out.amountDue : payload.amountShown;
   const ref = out.ref || payload.ref;
   const first = (payload.me.name || "").split(" ")[0] || "friend";
@@ -1389,10 +1519,15 @@ function showDone(payload, out) {
   $("#doneParty").innerHTML = items;
   const diff = amount - payload.amountShown;
   const note = $("#doneDiff");
+  const early = payload.tierFlipped ? payload.earlyTotal : null;
   if (diff > 0) {
     note.hidden = false;
-    note.textContent = "Early bird ended before your registration reached us, so your total is $" + amount + ", not $" + payload.amountShown +
-      ". Please Zelle the $" + diff + " difference to Junead with " + ref + " in the note.";
+    note.textContent = "Early bird ended just as your registration was sent, so your total is $" + amount + ", not $" + payload.amountShown +
+      ". If you sent $" + payload.amountShown + ", Zelle the $" + diff + " difference to Junead with " + ref + " in the note.";
+  } else if (diff === 0 && early !== null && early < amount) {
+    note.hidden = false;
+    note.textContent = "Early bird ended while you were registering. If you sent the early-bird amount of $" + early +
+      " and haven't sent the $" + (amount - early) + " difference yet, Zelle it to Junead with " + ref + " in the note.";
   } else if (diff < 0) {
     note.hidden = false;
     note.textContent = "Your total is $" + amount + ". If you sent $" + payload.amountShown + ", IGSA will refund the $" + (-diff) +
@@ -1424,10 +1559,16 @@ function showClosed() {
 
 /* ---------------- countdown ---------------- */
 let cutoffTimer = null;
+let tickTimer = null;
 function tick() {
   const tier = currentTier();
+  if (tier === "Closed") {
+    if (sending) return;              /* let a registration already on its way finish */
+    reportLate();
+    showClosed();
+    return;
+  }
   if (tier !== lastTier) { lastTier = tier; update(); }
-  if (tier === "Closed") { showClosed(); return; }
   const target = tier === "Early bird" ? EARLY_END : REG_CLOSE;
   const ms = target - new Date();
   const d = Math.floor(ms / 86400000);
@@ -1495,12 +1636,20 @@ document.addEventListener("change", function (e) {
     update(); return;
   }
   if (t.id === "shot") { takeFile(t.files && t.files[0]); return; }
-  if (t.id === "waiver" || t.name === "photo") setInvalid(t.closest(".field"), false);
+  if (t.name === "allergy") {
+    const on = t.value === "Yes" && t.checked;
+    $("#allergyWrap").hidden = !on;
+    if (!on) setInvalid($("#allergyWrap"), false);
+  }
+  if (t.name === "heard" && t.value === "Other") {
+    $("#heardOtherWrap").hidden = !t.checked;
+    if (!t.checked) setInvalid($("#heardOtherWrap"), false);
+  }
+  if (t.id === "waiver" || t.name === "photo" || t.name === "allergy" || t.name === "heard") setInvalid(t.closest(".field"), false);
 });
 document.addEventListener("input", function (e) {
   const f = e.target.closest && e.target.closest(".field");
   if (f && e.target.type !== "radio") setInvalid(f, false);
-  if (e.target.id === "zelleRef" && e.target.value.trim()) markPaying();
   if (e.target.dataset && (e.target.dataset.k === "name" || e.target.dataset.k === "age")) update();
 });
 document.addEventListener("click", function (e) {
@@ -1515,8 +1664,9 @@ document.addEventListener("click", function (e) {
 });
 
 /* A file dropped anywhere else must not make the browser open it and lose the form. */
-document.addEventListener("dragover", e => e.preventDefault());
-document.addEventListener("drop", e => e.preventDefault());
+const hasFiles = e => !!(e.dataTransfer && Array.from(e.dataTransfer.types || []).indexOf("Files") !== -1);
+document.addEventListener("dragover", e => { if (hasFiles(e)) e.preventDefault(); });
+document.addEventListener("drop", e => { if (hasFiles(e)) e.preventDefault(); });
 const shotField = $('[data-f="shot"]');
 ["dragenter", "dragover"].forEach(ev => shotField.addEventListener(ev, e => { e.preventDefault(); $("#drop").classList.add("over"); }));
 ["dragleave", "drop"].forEach(ev => shotField.addEventListener(ev, e => { e.preventDefault(); $("#drop").classList.remove("over"); }));
@@ -1528,7 +1678,7 @@ shotField.addEventListener("drop", e => { const f = e.dataTransfer && e.dataTran
 $("#reg").reset();
 $("#me-card").innerHTML = personFields("me", true);
 if (currentTier() === "Closed") showClosed();
-else { update(); tick(); setInterval(tick, 30000); }
+else { update(); tick(); tickTimer = setInterval(tick, 30000); }
 })();
 </script>
 </body>
