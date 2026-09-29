@@ -414,6 +414,13 @@ textarea{resize:vertical;min-height:84px}
 .qr-copy .payee{margin-top:10px;padding-top:9px;border-top:1px solid color-mix(in srgb, var(--ink) 15%, transparent);font-size:14px;color:var(--ink-2);line-height:1.45}
 .qr-copy .payee b{color:var(--ink)}
 .qr-copy .payee a{font-weight:700;text-decoration:none}
+.venmo-btn{
+  display:inline-flex;align-items:center;margin-top:8px;padding:8px 14px 6px;border-radius:999px;
+  background:#0068C8;color:#fff;font-weight:700;font-size:14.5px;text-decoration:none;
+}
+.venmo-btn:hover{background:#0057A8}
+.qr-copy .alt{margin-top:10px;font-size:13.5px;color:var(--ink-2);line-height:1.45}
+.qr-copy .alt a{font-weight:700;text-decoration:none;white-space:nowrap}
 @media (max-width:420px){.qr-slot{flex-direction:column;align-items:flex-start}.qr{width:160px;height:160px}}
 
 .sr-file{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden}
@@ -635,8 +642,12 @@ footer a{font-weight:700;text-decoration:none;white-space:nowrap}
         <p><b>Dress code is ethnic wear.</b> Wear Indian ethnic wear, or the traditional dress of your own culture: African, Vietnamese, Chinese, Korean, Mexican, Middle Eastern, Nepali, Filipino, or any heritage you want to celebrate. No traditional outfit? Anything festive and colourful is perfect.</p>
       </div>
       <div class="notice">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#7A3E9D" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><circle cx="8.5" cy="11" r="2.3"/><path d="M5.2 16c.6-1.6 1.8-2.4 3.3-2.4s2.7.8 3.3 2.4M14.5 10h4.5M14.5 13.5h3"/></svg>
+        <p><b>UofL students, faculty and staff: bring your UofL ID.</b> You'll need to show it at check-in on the day.</p>
+      </div>
+      <div class="notice">
         <svg viewBox="0 0 24 24" fill="none" stroke="#0E8FA0" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5"/><circle cx="17" cy="9" r="2.6"/><path d="M15.5 14.2c2.3.2 4.2 1.8 4.8 4.8"/></svg>
-        <p><b>One registration covers your whole group.</b> Add your guests and children below and pay once.</p>
+        <p><b>One registration covers your whole group.</b> Add your non-UofL guests and your children below and pay once. UofL students, faculty and staff register themselves.</p>
       </div>
     </div>
 
@@ -679,13 +690,13 @@ footer a{font-weight:700;text-decoration:none;white-space:nowrap}
           </thead>
           <tbody>
             <tr><th scope="row">UofL student, faculty or staff</th><td class="c-early">$3</td><td class="c-reg">$5</td></tr>
-            <tr><th scope="row">Non-UofL</th><td class="c-early">$5</td><td class="c-reg">$10</td></tr>
+            <tr><th scope="row">Non-UofL, and all guests</th><td class="c-early">$5</td><td class="c-reg">$10</td></tr>
             <tr><th scope="row">Children 10 to 17</th><td class="c-early">$3</td><td class="c-reg">$3</td></tr>
             <tr><th scope="row">Children under 10</th><td class="c-early">Free</td><td class="c-reg">Free</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="tk-foot">Guests pay by their own affiliation, so a UofL guest pays the UofL price. Early bird ends Thursday 15 October at 11:59 PM, and registration closes Thursday 22 October at 11:59 PM.</p>
+      <p class="tk-foot">Guests are people from outside UofL and pay the Non-UofL price. UofL students, faculty and staff register themselves with their own UofL email and ID, and show their UofL ID at check-in. Early bird ends Thursday 15 October at 11:59 PM, and registration closes Thursday 22 October at 11:59 PM.</p>
     </section>
 
     <form id="reg" novalidate autocomplete="off">
@@ -695,16 +706,17 @@ footer a{font-weight:700;text-decoration:none;white-space:nowrap}
       <section class="stage">
         <div class="stage-head"><span class="num" style="--c:var(--rani)">1</span><h2 id="me-h">Your details</h2></div>
         <div class="stage-body">
-          <p class="lead">UofL students, faculty and staff give their UofL email and Student ID or Employee ID. Everyone else just gives their email.</p>
+          <p class="lead">UofL students, faculty and staff give their UofL email and Student ID or Employee ID, and bring their UofL ID to check in on the day. Everyone else just gives their email.</p>
           <div class="person-block" id="me-card" data-p="me" role="group" aria-labelledby="me-h"></div>
         </div>
       </section>
 
       <!-- 2 GUESTS -->
       <section class="stage">
-        <div class="stage-head"><span class="num" style="--c:var(--marigold);color:#2A0E3F">2</span><h2>Guests</h2><span class="sub">Optional, 18 and over</span></div>
+        <div class="stage-head"><span class="num" style="--c:var(--marigold);color:#2A0E3F">2</span><h2>Guests</h2><span class="sub">Optional, non-UofL, 18 and over</span></div>
         <div class="stage-body">
-          <p class="empty" id="guestEmpty">Bringing friends or family aged 18 or over? Add each one here. Each guest pays by their own affiliation.</p>
+          <p class="lead">Guests are friends or family from outside UofL, and each pays the Non-UofL price. UofL students, faculty and staff can't be added as guests: they register themselves with their own UofL email and Student or Employee ID, at the UofL price.</p>
+          <p class="empty" id="guestEmpty">Bringing friends or family from outside UofL, aged 18 or over? Add each one here.</p>
           <div class="plist" id="guestList"></div>
           <button type="button" class="add-btn" data-act="add-guest" id="addGuest"><svg aria-hidden="true"><use href="#plus"/></svg>Add a guest</button>
           <p class="cap-note" id="guestCap" hidden>That's the limit of 20 guests on one registration. For a bigger group, register the rest separately.</p>
@@ -757,33 +769,43 @@ footer a{font-weight:700;text-decoration:none;white-space:nowrap}
           <p class="tier-note" id="tierNote" role="status" hidden></p>
           <div id="bill"></div>
           <div class="qr-slot">
-            <img class="qr" src="assets/zelle-qr.png" alt="Zelle QR code to pay Junead Mankari" width="136" height="136">
+            <img class="qr" src="assets/venmo-qr.png" alt="Venmo QR code to pay Mohammad Junead Mankari, @junead1298" width="136" height="136">
             <div class="qr-copy">
               <p class="k" id="qrLabel">Send exactly</p>
               <p class="big" id="qrAmount">$0</p>
               <p class="warn" id="qrWarn" hidden>Finish everyone's details above before you pay.</p>
-              <p class="small">Scan with your banking app, or send by Zelle to the number below. Put your full name in the Zelle note.</p>
-              <p class="payee">Zelle to <b>Junead Mankari</b><br><a href="tel:+15028761596">+1 (502) 876-1596</a></p>
+              <p class="small">Scan the code with the Venmo app, or on your phone tap the button below. Put your full name in the payment note.</p>
+              <p class="payee">Venmo to <b>Mohammad Junead Mankari</b>, <b>@junead1298</b></p>
+              <a class="venmo-btn" href="https://venmo.com/u/junead1298" target="_blank" rel="noopener">Open @junead1298 in Venmo</a>
+              <p class="alt">Prefer Zelle? Send to <b>Junead Mankari</b>, <a href="tel:+15028761596">+1 (502) 876-1596</a>.</p>
             </div>
           </div>
+          <div class="field" data-f="payMethod">
+            <span class="lbl" id="payLbl">Paid with<span class="req" aria-hidden="true">&#8288;*</span></span>
+            <div class="seg" role="radiogroup" aria-labelledby="payLbl" aria-required="true">
+              <label><input type="radio" name="payMethod" value="Venmo" autocomplete="off">Venmo</label>
+              <label><input type="radio" name="payMethod" value="Zelle" autocomplete="off">Zelle</label>
+            </div>
+            <span class="err" id="payMethod-err">Choose Venmo or Zelle.</span>
+          </div>
           <div class="field" data-f="zelleRef">
-            <label class="lbl" for="zelleRef">Zelle confirmation number<span class="req" aria-hidden="true">&#8288;*</span></label>
-            <input id="zelleRef" type="text" maxlength="60" autocomplete="off" aria-required="true" placeholder="From your Zelle payment receipt">
-            <span class="err" id="zelleRef-err">Enter the confirmation number from your Zelle payment.</span>
+            <label class="lbl" for="zelleRef">Payment confirmation or transaction ID<span class="req" aria-hidden="true">&#8288;*</span></label>
+            <input id="zelleRef" type="text" maxlength="60" autocomplete="off" aria-required="true" placeholder="From your Venmo or Zelle receipt">
+            <span class="err" id="zelleRef-err">Enter the confirmation number or transaction ID from your payment.</span>
           </div>
           <div class="field" data-f="shot">
-            <span class="lbl" id="shotLbl">Screenshot of your Zelle payment<span class="req" aria-hidden="true">&#8288;*</span><span class="sr"> (required)</span></span>
+            <span class="lbl" id="shotLbl">Screenshot of your payment<span class="req" aria-hidden="true">&#8288;*</span><span class="sr"> (required)</span></span>
             <input type="file" id="shot" class="sr-file" accept="image/*,application/pdf" aria-labelledby="shotLbl" aria-required="true">
             <label class="drop" id="drop" for="shot">
               <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="9" width="36" height="30" rx="5" fill="none" stroke="#D6115F" stroke-width="3"/><circle cx="17" cy="19" r="3.5" fill="#FFC93C"/><path d="M9 35l10-10 7 7 5-5 8 8" fill="none" stroke="#0E8FA0" stroke-width="3" stroke-linejoin="round"/></svg>
-              <span><b>Tap to upload your screenshot</b><span>A photo or PDF of the Zelle receipt. Only IGSA organizers can see it.</span></span>
+              <span><b>Tap to upload your screenshot</b><span>A photo or PDF of the Venmo or Zelle receipt. Only IGSA organizers can see it.</span></span>
             </label>
             <div class="preview" id="preview" hidden>
               <div id="pvThumb"></div>
               <div class="meta"><b id="pvName"></b><span id="pvSize"></span><br><button type="button" class="linkbtn" data-act="change-file">Choose a different file</button></div>
             </div>
             <span class="up-status" id="upStatus" role="status"></span>
-            <span class="err" id="shotErr" role="alert">Upload a screenshot of your Zelle payment.</span>
+            <span class="err" id="shotErr" role="alert">Upload a screenshot of your payment.</span>
           </div>
         </div>
       </section>
@@ -889,7 +911,8 @@ footer a{font-weight:700;text-decoration:none;white-space:nowrap}
         </div>
         <ul class="steps">
           <li>Keep your reference number. We use it to check your group in at the door.</li>
-          <li>We match every Zelle payment to its registration. If something doesn't line up, Junead will get in touch.</li>
+          <li id="doneIdStep" hidden><b>Bring your UofL ID.</b> You'll need to show it at check-in.</li>
+          <li>We match every payment to its registration. If something doesn't line up, Junead will get in touch.</li>
           <li>Dandiya sticks are provided. Come in ethnic wear, from any culture.</li>
         </ul>
       </div>
@@ -923,6 +946,8 @@ const MAX_KIDS = 20;
 const MAX_RAW_BYTES = 5 * 1024 * 1024;
 const CARD_COLORS = ["#FF8C1A", "#0E8FA0", "#2FA35B", "#7A3E9D", "#D6115F"];
 const CONTACT = "email igsa.uofl@gmail.com or call Junead on +1 (502) 876-1596";
+const UOFL_EMAIL = /^[^\s@]+@louisville\.edu$/i;
+const GUEST_UOFL_MSG = "UofL students, faculty and staff register themselves. Remove this guest and ask them to register with their own UofL email and ID.";
 
 const REF = "DN-" + Date.now().toString(36).toUpperCase() + Math.random().toString(36).slice(2, 6).toUpperCase();
 
@@ -1005,9 +1030,25 @@ function cardHead(p, word, n) {
     '<span class="pc-price" data-price></span>' +
     '<button type="button" class="pc-remove" data-act="remove" aria-label="Remove ' + word.toLowerCase() + ' ' + n + '">Remove</button></div>';
 }
+/* Guests are always from outside UofL, so there is no affiliation choice. */
+function guestFields(p) {
+  return '' +
+  '<div class="grid2">' +
+    textField(p, "name", "Guest's full name", "text", "Enter a first and last name.",
+      'maxlength="80" autocomplete="off" placeholder="First and last name"') +
+    textField(p, "email", "Guest's email", "email", "Enter a valid email address.",
+      'maxlength="120" autocomplete="off" placeholder="guest@example.com" inputmode="email"') +
+  '</div>' +
+  '<div class="grid2">' +
+    textField(p, "phone", "Phone number", "tel", "Enter a phone number of 10 to 15 digits.",
+      'maxlength="30" autocomplete="off" placeholder="(502) 555-0100" inputmode="tel"') +
+    '<div class="field" data-f="' + p + '-food"><span class="lbl" id="' + p + '-food-l">Dinner' + REQ + '</span>' +
+      foodSeg(p) + '<span class="err" id="' + p + '-food-err">Choose Veg or Non-veg.</span></div>' +
+  '</div>';
+}
 function guestCard(p, n, color) {
   return '<div class="pcard" id="' + p + '-card" data-p="' + p + '" role="group" aria-labelledby="' + p + '-title" style="--c:' + color + '">' +
-    cardHead(p, "Guest", n) + '<div class="pcard-body">' + personFields(p, false) + '</div></div>';
+    cardHead(p, "Guest", n) + '<div class="pcard-body">' + guestFields(p) + '</div></div>';
 }
 function kidCard(p, n, color) {
   return '<div class="pcard" id="' + p + '-card" data-p="' + p + '" role="group" aria-labelledby="' + p + '-title" style="--c:' + color + '">' +
@@ -1041,6 +1082,10 @@ function readPerson(p) {
     phone: val(root, "phone"),
     food: radio(p + "-food")
   };
+}
+function readGuest(p) {
+  const root = card(p);
+  return { name: val(root, "name"), aff: "Non-UofL", email: val(root, "email"), phone: val(root, "phone"), food: radio(p + "-food") };
 }
 function readKid(p) {
   const root = card(p);
@@ -1078,9 +1123,12 @@ function computeBill(tier) {
   const meP = me.aff ? PRICES[tier][me.aff] : null;
   lines.push({ who: me.name || "You", what: me.aff ? (me.aff + ", " + tier.toLowerCase()) : "choose UofL or Non-UofL", amt: meP });
   guests.forEach((p, i) => {
-    const g = readPerson(p);
-    const gp = g.aff ? PRICES[tier][g.aff] : null;
-    lines.push({ who: g.name || ("Guest " + (i + 1)), what: "Guest" + (g.aff ? ", " + g.aff : ", choose UofL or Non-UofL"), amt: gp });
+    const g = readGuest(p);
+    if (UOFL_EMAIL.test(g.email)) {
+      lines.push({ who: g.name || ("Guest " + (i + 1)), what: "UofL: must register themselves, remove this guest", amt: null });
+    } else {
+      lines.push({ who: g.name || ("Guest " + (i + 1)), what: "Guest, Non-UofL price", amt: PRICES[tier]["Non-UofL"] });
+    }
   });
   kids.forEach((p, i) => {
     const k = readKid(p);
@@ -1102,8 +1150,7 @@ function update() {
     const c = card(p);
     c.querySelector(".pc-n").textContent = i + 1;
     c.querySelector("[data-act=remove]").setAttribute("aria-label", "Remove guest " + (i + 1));
-    const aff = radio(p + "-aff");
-    c.querySelector("[data-price]").textContent = aff ? money(PRICES[tier][aff]) : "UofL or not?";
+    c.querySelector("[data-price]").textContent = UOFL_EMAIL.test(readGuest(p).email) ? "UofL: can't be a guest" : money(PRICES[tier]["Non-UofL"]);
   });
   kids.forEach((p, i) => {
     const c = card(p);
@@ -1261,11 +1308,11 @@ async function prepareFile(file) {
   const isPdf = file.type === "application/pdf" || /\.pdf$/i.test(file.name);
   const isHeic = /\.(heic|heif)$/i.test(file.name);
   const isImage = /^image\//.test(file.type) || isHeic;
-  if (!isPdf && !isImage) throw new Error("Please upload a photo or a PDF of your Zelle receipt.");
+  if (!isPdf && !isImage) throw new Error("Please upload a photo or a PDF of your payment receipt.");
   if (isImage) {
     try { return await compressImage(file); } catch (e) { /* this browser can't draw it, send the original */ }
   }
-  if (file.size > MAX_RAW_BYTES) throw new Error("That file is over 5 MB. Please upload a screenshot of the Zelle receipt instead.");
+  if (file.size > MAX_RAW_BYTES) throw new Error("That file is over 5 MB. Please upload a screenshot of the payment receipt instead.");
   const mime = isPdf ? "application/pdf" : (file.type || (isHeic ? "image/heic" : ""));
   if (OK_RAW.indexOf(mime) === -1) throw new Error("Please upload a JPG, PNG or PDF.");
   return { name: file.name, mime: mime, data: await readAsBase64(file), bytes: file.size, preview: null };
@@ -1283,7 +1330,7 @@ async function onFile(file) {
   upload = null;
   showDrop(true);
   setInvalid(field, false);
-  $("#shotErr").textContent = "Upload a screenshot of your Zelle payment.";
+  $("#shotErr").textContent = "Upload a screenshot of your payment.";
   if (!file) { status.textContent = ""; return; }
   preparing = true;
   status.textContent = "Getting your screenshot ready...";
@@ -1293,7 +1340,7 @@ async function onFile(file) {
     upload = up;
     status.textContent = "Screenshot ready: " + file.name + ", " + fmtSize(up.bytes) + ".";
     $("#pvThumb").innerHTML = up.preview
-      ? '<img src="' + up.preview + '" alt="Your Zelle screenshot">'
+      ? '<img src="' + up.preview + '" alt="Your payment screenshot">'
       : '<div class="pdf">' + (up.mime === "application/pdf" ? "PDF" : "IMG") + '</div>';
     $("#pvName").textContent = file.name;
     $("#pvSize").textContent = "Ready to send, " + fmtSize(up.bytes);
@@ -1361,7 +1408,13 @@ function validate() {
     mark(p + "-food", !x.food);
   };
   person("me");
-  guests.forEach(person);
+  guests.forEach(p => {
+    const g = readGuest(p);
+    mark(p + "-name", g.name.length < 2);
+    mark(p + "-email", !emailOk(g.email) || uoflOk(g.email), uoflOk(g.email) ? GUEST_UOFL_MSG : "Enter a valid email address.");
+    mark(p + "-phone", !phoneOk(g.phone));
+    mark(p + "-food", !g.food);
+  });
   kids.forEach(p => {
     const k = readKid(p);
     mark(p + "-name", !k.name);
@@ -1372,8 +1425,9 @@ function validate() {
   const allergy = radio("allergy");
   mark("allergy", !allergy);
   if (allergy === "Yes") mark("allergyNote", !$("#allergyNote").value.trim());
+  mark("payMethod", !radio("payMethod"));
   mark("zelleRef", !$("#zelleRef").value.trim());
-  mark("shot", !upload, preparing ? "Your screenshot is still loading. Wait a moment, then press Register." : "Upload a screenshot of your Zelle payment.");
+  mark("shot", !upload, preparing ? "Your screenshot is still loading. Wait a moment, then press Register." : "Upload a screenshot of your payment.");
   mark("waiver", !$("#waiver").checked);
   mark("photo", !radio("photo"));
   const heard = checkedValues("heard");
@@ -1392,13 +1446,14 @@ function buildPayload() {
     tierFlipped: flipped,
     earlyTotal: flipped ? computeBill("Early bird").total : null,
     me: readPerson("me"),
-    guests: guests.map(readPerson),
+    guests: guests.map(readGuest),
     kids: kids.map(readKid),
     allergy: radio("allergy"),
     allergyNote: radio("allergy") === "Yes" ? $("#allergyNote").value.trim() : "",
     dietary: $("#dietary").value.trim(),
     heard: checkedValues("heard"),
     heardOther: checkedValues("heard").indexOf("Other") !== -1 ? $("#heardOther").value.trim() : "",
+    payMethod: radio("payMethod"),
     zelleRef: $("#zelleRef").value.trim(),
     waiver: $("#waiver").checked,
     photo: radio("photo"),
@@ -1408,8 +1463,8 @@ function buildPayload() {
 function paidNote() {
   if (!openAtLoad) return "";
   const z = $("#zelleRef").value.trim();
-  if (z) return "If you already sent a Zelle payment, " + CONTACT + " with your Zelle confirmation " + z + " and we'll sort it out.";
-  return "If you sent a Zelle payment but didn't finish registering, " + CONTACT + " with the amount and the time you sent it, and we'll sort it out.";
+  if (z) return "If you already sent a payment, " + CONTACT + " with your payment confirmation " + z + " and we'll sort it out.";
+  return "If you sent a Venmo or Zelle payment but didn't finish registering, " + CONTACT + " with the amount and the time you sent it, and we'll sort it out.";
 }
 
 /* Someone who paid just before the close still reaches the server, which
@@ -1514,20 +1569,21 @@ function showDone(payload, out) {
   const tier = PRICES[out.tier] ? out.tier : shownTier;
   const priceOf = x => PRICES[tier] ? PRICES[tier][x.aff] : 0;
   let items = '<li>' + esc(payload.me.name) + '<span>You, ' + money(priceOf(payload.me)) + '</span></li>';
-  payload.guests.forEach(g => { items += '<li>' + esc(g.name) + '<span>Guest, ' + money(priceOf(g)) + '</span></li>'; });
+  payload.guests.forEach(g => { items += '<li>' + esc(g.name) + '<span>Guest, ' + money(priceOf({ aff: "Non-UofL" })) + '</span></li>'; });
   payload.kids.forEach(k => { items += '<li>' + esc(k.name) + '<span>Child, ' + money(childPrice(k.age)) + '</span></li>'; });
   $("#doneParty").innerHTML = items;
+  $("#doneIdStep").hidden = payload.me.aff !== "UofL";
   const diff = amount - payload.amountShown;
   const note = $("#doneDiff");
   const early = payload.tierFlipped ? payload.earlyTotal : null;
   if (diff > 0) {
     note.hidden = false;
     note.textContent = "Early bird ended just as your registration was sent, so your total is $" + amount + ", not $" + payload.amountShown +
-      ". If you sent $" + payload.amountShown + ", Zelle the $" + diff + " difference to Junead with " + ref + " in the note.";
+      ". If you sent $" + payload.amountShown + ", send Junead the $" + diff + " difference (Venmo @junead1298 or Zelle) with " + ref + " in the note.";
   } else if (diff === 0 && early !== null && early < amount) {
     note.hidden = false;
     note.textContent = "Early bird ended while you were registering. If you sent the early-bird amount of $" + early +
-      " and haven't sent the $" + (amount - early) + " difference yet, Zelle it to Junead with " + ref + " in the note.";
+      " and haven't sent the $" + (amount - early) + " difference yet, send it to Junead (Venmo @junead1298 or Zelle) with " + ref + " in the note.";
   } else if (diff < 0) {
     note.hidden = false;
     note.textContent = "Your total is $" + amount + ". If you sent $" + payload.amountShown + ", IGSA will refund the $" + (-diff) +
@@ -1645,12 +1701,20 @@ document.addEventListener("change", function (e) {
     $("#heardOtherWrap").hidden = !t.checked;
     if (!t.checked) setInvalid($("#heardOtherWrap"), false);
   }
-  if (t.id === "waiver" || t.name === "photo" || t.name === "allergy" || t.name === "heard") setInvalid(t.closest(".field"), false);
+  if (t.id === "waiver" || t.name === "photo" || t.name === "allergy" || t.name === "heard" || t.name === "payMethod") setInvalid(t.closest(".field"), false);
 });
 document.addEventListener("input", function (e) {
   const f = e.target.closest && e.target.closest(".field");
   if (f && e.target.type !== "radio") setInvalid(f, false);
   if (e.target.dataset && (e.target.dataset.k === "name" || e.target.dataset.k === "age")) update();
+  if (e.target.dataset && e.target.dataset.k === "email" && /^g\d+-email$/.test(e.target.id)) {
+    const gf = e.target.closest(".field");
+    if (UOFL_EMAIL.test(e.target.value.trim())) {
+      gf.querySelector(".err").textContent = GUEST_UOFL_MSG;
+      setInvalid(gf, true);
+    }
+    update();
+  }
 });
 document.addEventListener("click", function (e) {
   const b = e.target.closest && e.target.closest("[data-act]");
