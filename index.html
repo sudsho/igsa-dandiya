@@ -469,6 +469,8 @@ textarea{resize:vertical;min-height:84px}
   margin:18px 0 0;padding:12px 15px;border-radius:var(--r-sm);font-size:15px;font-weight:600;
   border:1.5px solid var(--err);background:color-mix(in srgb, var(--err) 9%, var(--surface));color:var(--ink);
 }
+.saving{margin:18px 0 0;padding:12px 15px;border-radius:var(--r-sm);font-size:15px;font-weight:600;
+  border:1.5px solid var(--line-strong);background:var(--surface-2);color:var(--ink)}
 .totalbar{
   position:sticky;bottom:0;z-index:5;display:flex;align-items:center;gap:14px;
   margin:24px -18px 0;padding:12px 18px calc(12px + env(safe-area-inset-bottom));
@@ -777,28 +779,20 @@ footer a{font-weight:700;text-decoration:none;white-space:nowrap}
               <p class="small">Scan the code with the Venmo app, or on your phone tap the button below. Put your full name in the payment note.</p>
               <p class="payee">Venmo to <b>Mohammad Junead Mankari</b>, <b>@junead1298</b></p>
               <a class="venmo-btn" href="https://venmo.com/u/junead1298" target="_blank" rel="noopener">Open @junead1298 in Venmo</a>
-              <p class="alt">Prefer Zelle? Send to <b>Junead Mankari</b>, <a href="tel:+15028761596">+1 (502) 876-1596</a>.</p>
             </div>
-          </div>
-          <div class="field" data-f="payMethod">
-            <span class="lbl" id="payLbl">Paid with<span class="req" aria-hidden="true">&#8288;*</span></span>
-            <div class="seg" role="radiogroup" aria-labelledby="payLbl" aria-required="true">
-              <label><input type="radio" name="payMethod" value="Venmo" autocomplete="off">Venmo</label>
-              <label><input type="radio" name="payMethod" value="Zelle" autocomplete="off">Zelle</label>
-            </div>
-            <span class="err" id="payMethod-err">Choose Venmo or Zelle.</span>
           </div>
           <div class="field" data-f="zelleRef">
-            <label class="lbl" for="zelleRef">Payment confirmation or transaction ID<span class="req" aria-hidden="true">&#8288;*</span></label>
-            <input id="zelleRef" type="text" maxlength="60" autocomplete="off" aria-required="true" placeholder="From your Venmo or Zelle receipt">
-            <span class="err" id="zelleRef-err">Enter the confirmation number or transaction ID from your payment.</span>
+            <label class="lbl" for="zelleRef">Venmo transaction ID<span class="req" aria-hidden="true">&#8288;*</span></label>
+            <input id="zelleRef" type="text" maxlength="60" autocomplete="off" aria-required="true" data-desc="zelleRef-hint" aria-describedby="zelleRef-hint" placeholder="From the payment in Venmo">
+            <p class="hint" id="zelleRef-hint">In Venmo, open the payment you just sent. The Transaction ID is listed in its details.</p>
+            <span class="err" id="zelleRef-err">Enter the transaction ID from your Venmo payment.</span>
           </div>
           <div class="field" data-f="shot">
-            <span class="lbl" id="shotLbl">Screenshot of your payment<span class="req" aria-hidden="true">&#8288;*</span><span class="sr"> (required)</span></span>
+            <span class="lbl" id="shotLbl">Screenshot of your Venmo payment<span class="req" aria-hidden="true">&#8288;*</span><span class="sr"> (required)</span></span>
             <input type="file" id="shot" class="sr-file" accept="image/*,application/pdf" aria-labelledby="shotLbl" aria-required="true">
             <label class="drop" id="drop" for="shot">
               <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="9" width="36" height="30" rx="5" fill="none" stroke="#D6115F" stroke-width="3"/><circle cx="17" cy="19" r="3.5" fill="#FFC93C"/><path d="M9 35l10-10 7 7 5-5 8 8" fill="none" stroke="#0E8FA0" stroke-width="3" stroke-linejoin="round"/></svg>
-              <span><b>Tap to upload your screenshot</b><span>A photo or PDF of the Venmo or Zelle receipt. Only IGSA organizers can see it.</span></span>
+              <span><b>Tap to upload your screenshot</b><span>A screenshot of the Venmo payment. Only IGSA organizers can see it.</span></span>
             </label>
             <div class="preview" id="preview" hidden>
               <div id="pvThumb"></div>
@@ -868,6 +862,7 @@ footer a{font-weight:700;text-decoration:none;white-space:nowrap}
       <div class="hp" aria-hidden="true"><label for="hp">Leave this field empty</label><input type="text" id="hp" tabindex="-1" autocomplete="off"></div>
 
       <p class="formerr" id="formErr" role="alert" hidden></p>
+      <p class="saving" id="savingNote" role="status" hidden>Still saving. This can take up to a minute, so please keep this page open.</p>
 
       <div class="totalbar">
         <div class="tl">
@@ -1425,7 +1420,6 @@ function validate() {
   const allergy = radio("allergy");
   mark("allergy", !allergy);
   if (allergy === "Yes") mark("allergyNote", !$("#allergyNote").value.trim());
-  mark("payMethod", !radio("payMethod"));
   mark("zelleRef", !$("#zelleRef").value.trim());
   mark("shot", !upload, preparing ? "Your screenshot is still loading. Wait a moment, then press Register." : "Upload a screenshot of your payment.");
   mark("waiver", !$("#waiver").checked);
@@ -1453,18 +1447,45 @@ function buildPayload() {
     dietary: $("#dietary").value.trim(),
     heard: checkedValues("heard"),
     heardOther: checkedValues("heard").indexOf("Other") !== -1 ? $("#heardOther").value.trim() : "",
-    payMethod: radio("payMethod"),
+    payMethod: "Venmo",
     zelleRef: $("#zelleRef").value.trim(),
     waiver: $("#waiver").checked,
     photo: radio("photo"),
     file: upload ? { name: upload.name, mime: upload.mime, data: upload.data } : null
   };
 }
+/* text/plain keeps this a CORS simple request (no preflight, which Apps
+   Script cannot answer). The /exec URL redirects to googleusercontent,
+   and both hops allow any origin, so the JSON reply is readable. */
+async function sendOnce(payload, ms) {
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), ms);
+  try {
+    const res = await fetch(ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify(payload),
+      redirect: "follow",
+      signal: ctrl.signal
+    });
+    let out = null;
+    try { out = await res.json(); } catch (x) { out = null; }
+    if (!out || !out.ok) {
+      const err = new Error(out && out.userError ? out.error : "save failed");
+      err.user = !!(out && out.userError);
+      err.closed = !!(out && out.closed);
+      throw err;
+    }
+    return out;
+  } finally {
+    clearTimeout(timer);
+  }
+}
 function paidNote() {
   if (!openAtLoad) return "";
   const z = $("#zelleRef").value.trim();
   if (z) return "If you already sent a payment, " + CONTACT + " with your payment confirmation " + z + " and we'll sort it out.";
-  return "If you sent a Venmo or Zelle payment but didn't finish registering, " + CONTACT + " with the amount and the time you sent it, and we'll sort it out.";
+  return "If you sent a Venmo payment but didn't finish registering, " + CONTACT + " with the amount and the time you sent it, and we'll sort it out.";
 }
 
 /* Someone who paid just before the close still reaches the server, which
@@ -1510,31 +1531,26 @@ $("#reg").addEventListener("submit", async function (e) {
   btn.disabled = true;
   btn.textContent = "Sending...";
   sending = true;
+  /* Google's web-app front end sometimes takes 30 s or more to answer. */
+  const slowTimer = setTimeout(() => { $("#savingNote").hidden = false; }, 6000);
   try {
-    const ctrl = new AbortController();
-    const timer = setTimeout(() => ctrl.abort(), 120000);
-    /* text/plain keeps this a CORS simple request (no preflight, which Apps
-       Script cannot answer). The /exec URL redirects to googleusercontent,
-       and both hops allow any origin, so the JSON reply is readable. */
-    const res = await fetch(ENDPOINT, {
-      method: "POST",
-      headers: { "Content-Type": "text/plain;charset=utf-8" },
-      body: JSON.stringify(payload),
-      redirect: "follow",
-      signal: ctrl.signal
-    });
-    clearTimeout(timer);
-    let out = null;
-    try { out = await res.json(); } catch (x) { out = null; }
-    if (!out || !out.ok) {
-      const err = new Error(out && out.userError ? out.error : "save failed");
-      err.user = !!(out && out.userError);
-      err.closed = !!(out && out.closed);
-      throw err;
+    let out;
+    try {
+      out = await sendOnce(payload, 75000);
+    } catch (first) {
+      /* A dropped or garbled reply is retried once with the same reference,
+         which the server treats as the same registration, never a second one. */
+      if (first.user || first.closed) throw first;
+      await new Promise(r => setTimeout(r, 2000));
+      out = await sendOnce(payload, 75000);
     }
+    clearTimeout(slowTimer);
+    $("#savingNote").hidden = true;
     sending = false;
     showDone(payload, out);
   } catch (err) {
+    clearTimeout(slowTimer);
+    $("#savingNote").hidden = true;
     sending = false;
     box.hidden = false;
     if (err && err.closed) {
@@ -1579,11 +1595,11 @@ function showDone(payload, out) {
   if (diff > 0) {
     note.hidden = false;
     note.textContent = "Early bird ended just as your registration was sent, so your total is $" + amount + ", not $" + payload.amountShown +
-      ". If you sent $" + payload.amountShown + ", send Junead the $" + diff + " difference (Venmo @junead1298 or Zelle) with " + ref + " in the note.";
+      ". If you sent $" + payload.amountShown + ", send Junead the $" + diff + " difference on Venmo (@junead1298) with " + ref + " in the note.";
   } else if (diff === 0 && early !== null && early < amount) {
     note.hidden = false;
     note.textContent = "Early bird ended while you were registering. If you sent the early-bird amount of $" + early +
-      " and haven't sent the $" + (amount - early) + " difference yet, send it to Junead (Venmo @junead1298 or Zelle) with " + ref + " in the note.";
+      " and haven't sent the $" + (amount - early) + " difference yet, send it to Junead on Venmo (@junead1298) with " + ref + " in the note.";
   } else if (diff < 0) {
     note.hidden = false;
     note.textContent = "Your total is $" + amount + ". If you sent $" + payload.amountShown + ", IGSA will refund the $" + (-diff) +
@@ -1701,7 +1717,7 @@ document.addEventListener("change", function (e) {
     $("#heardOtherWrap").hidden = !t.checked;
     if (!t.checked) setInvalid($("#heardOtherWrap"), false);
   }
-  if (t.id === "waiver" || t.name === "photo" || t.name === "allergy" || t.name === "heard" || t.name === "payMethod") setInvalid(t.closest(".field"), false);
+  if (t.id === "waiver" || t.name === "photo" || t.name === "allergy" || t.name === "heard") setInvalid(t.closest(".field"), false);
 });
 document.addEventListener("input", function (e) {
   const f = e.target.closest && e.target.closest(".field");
