@@ -203,6 +203,64 @@ h1{
 }
 .countdown strong{font-family:var(--display);font-weight:400;font-size:22px;color:#FFC93C;font-variant-numeric:tabular-nums}
 
+/* ============================ DANCERS ============================
+   Pairs of dancers drawn by the small script under the masthead. Every
+   moving part is drawn with its pivot at (0,0) of its own group, so the
+   CSS rotations need no transform-box tricks and behave the same in every
+   browser. Reduced motion freezes them mid-clash (see the global rule). */
+.dancefloor{
+  --T:1.2s;
+  position:relative;height:100px;margin-top:-14px;
+  display:flex;justify-content:center;overflow:hidden;pointer-events:none;
+}
+.dancefloor::before{
+  content:"";position:absolute;left:0;right:0;bottom:-34px;height:96px;z-index:-1;
+  background:radial-gradient(55% 62% at 50% 100%, rgba(255,201,60,.30), rgba(255,77,141,.13) 55%, rgba(255,77,141,0) 78%);
+}
+.dancefloor svg{flex:none;width:131px;height:100px;overflow:visible}
+@media (min-width:720px){
+  .dancefloor{height:120px;margin-top:-8px}
+  .dancefloor svg{width:157px;height:120px}
+}
+.dancefloor .bob,.dancefloor .twirl,.dancefloor .arm-i,.dancefloor .arm-o,
+.dancefloor .sk,.dancefloor .leg-l,.dancefloor .leg-r,.dancefloor .spark{transform-origin:0 0}
+.dancefloor .bob{animation:dBob calc(var(--T) / 2) ease-in-out var(--d) infinite}
+.dancefloor .twirl{animation:dTwirl calc(var(--T) * 4) ease-in-out var(--dt) infinite}
+.dancefloor .arm-i{animation:dArmI var(--T) linear var(--d) infinite}
+.dancefloor .arm-o{animation:dArmO var(--T) ease-in-out var(--d) infinite}
+.dancefloor .sk{animation:dSkirt var(--T) ease-in-out var(--d) infinite}
+.dancefloor .leg-l{animation:dLeg var(--T) ease-in-out var(--d) infinite}
+.dancefloor .leg-r{animation:dLeg var(--T) ease-in-out calc(var(--d) - var(--T) / 2) infinite}
+.dancefloor .spark{animation:dSpark var(--T) linear var(--d) infinite}
+.dancefloor.paused *{animation-play-state:paused}
+.dancefloor.still *{animation:none}
+.cd-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:20px 0 0}
+.cd-row .countdown{margin:0}
+.dance-toggle{
+  flex:none;width:36px;height:36px;display:grid;place-items:center;padding:0;border-radius:50%;
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);color:#FFF5EA;cursor:pointer;
+}
+.dance-toggle:hover{background:rgba(255,255,255,.18)}
+.dance-toggle svg{width:14px;height:14px}
+.dance-toggle .i-play,.dance-toggle[aria-pressed="true"] .i-pause{display:none}
+.dance-toggle[aria-pressed="true"] .i-play{display:block}
+@keyframes dBob{0%,100%{transform:translateY(-1.8px)}50%{transform:translateY(.7px)}}
+@keyframes dArmI{
+  0%,100%{transform:rotate(80deg);animation-timing-function:ease-in-out}
+  36%{transform:rotate(30deg);animation-timing-function:cubic-bezier(.45,0,1,1)}
+  50%{transform:rotate(0deg);animation-timing-function:cubic-bezier(0,0,.35,1)}
+  62%{transform:rotate(16deg);animation-timing-function:ease-in-out}
+}
+@keyframes dArmO{0%,100%{transform:rotate(0deg)}50%{transform:rotate(-38deg)}}
+@keyframes dSkirt{0%,100%{transform:skewX(7deg) scaleX(1.03)}50%{transform:skewX(-7deg) scaleX(1.1)}}
+@keyframes dLeg{0%,44%,100%{transform:translateY(0)}22%{transform:translateY(-3px)}}
+@keyframes dSpark{
+  0%,46%,66%,100%{transform:scale(0);opacity:0}
+  50%{transform:scale(1.3);opacity:1}
+  57%{transform:scale(.85);opacity:.75}
+}
+@keyframes dTwirl{0%,88%{transform:scaleX(1)}94%{transform:scaleX(-1)}100%{transform:scaleX(1)}}
+
 /* ============================ MIRROR BAND ============================ */
 .mirrors{
   height:36px;background-color:#B80D55;
@@ -621,8 +679,167 @@ footer a{font-weight:700;text-decoration:none;white-space:nowrap}
         <li><span class="dot" style="--c:#2EC4B6"></span>Bollywood night</li>
         <li><span class="dot" style="--c:#7BE08F"></span>Sticks provided</li>
       </ul>
-      <p class="countdown" id="countdown"><span id="cdLabel">Early bird ends in</span> <strong id="cdVal">&nbsp;</strong></p>
+      <div class="cd-row">
+        <p class="countdown" id="countdown"><span id="cdLabel">Early bird ends in</span> <strong id="cdVal">&nbsp;</strong></p>
+        <button type="button" class="dance-toggle" id="danceToggle" aria-pressed="false" aria-label="Stop the dancing animation" title="Stop or start the dancers" hidden>
+          <svg class="i-pause" viewBox="0 0 14 14" aria-hidden="true"><rect x="2.5" y="1.5" width="3.2" height="11" rx="1" fill="currentColor"/><rect x="8.3" y="1.5" width="3.2" height="11" rx="1" fill="currentColor"/></svg>
+          <svg class="i-play" viewBox="0 0 14 14" aria-hidden="true"><path d="M3.5 1.8 L12 7 L3.5 12.2Z" fill="currentColor"/></svg>
+        </button>
+      </div>
     </div>
+    <div class="dancefloor" id="dancefloor" aria-hidden="true"></div>
+    <script>
+    /* Dancing pairs under the masthead. A separate script on purpose: if
+       anything here fails, the registration form script still runs. */
+    (function () {
+      try {
+        var floor = document.getElementById("dancefloor");
+        if (!floor) return;
+        var T = 1.2, HAIR = "#2A1020", GOLD = "#FFC93C", SHOE = "#C88A12";
+        var SKIN = ["#8D5524", "#E0AC69", "#6B4226", "#C68642", "#F1C27D", "#A86B3C", "#5A3825", "#D9A066"];
+        /* women: skirt, border, blouse, dupatta */
+        var WOMEN = [
+          ["#D6115F", "#FFC93C", "#FF8C1A", "#2FA35B"],
+          ["#FF8C1A", "#D6115F", "#0E8FA0", "#FFC93C"],
+          ["#0E8FA0", "#FFC93C", "#D6115F", "#FF4D8D"],
+          ["#2FA35B", "#FF4D8D", "#FFC93C", "#D6115F"],
+          ["#7A3E9D", "#FFC93C", "#2FA35B", "#FF8C1A"],
+          ["#FFC93C", "#D6115F", "#7A3E9D", "#0E8FA0"]
+        ];
+        /* men: kediyu, trim, churidar, pagdi (null = no turban) */
+        var MEN = [
+          ["#FFF5EA", "#D6115F", "#F2D9A0", "#FF8C1A"],
+          ["#FF8C1A", "#FFC93C", "#FFF5EA", null],
+          ["#0E8FA0", "#FFC93C", "#F7E6C4", "#D6115F"],
+          ["#FFC93C", "#D6115F", "#FFF5EA", null],
+          ["#D6115F", "#FFC93C", "#F7E6C4", "#2FA35B"]
+        ];
+        var STICKS = [["#FFB020", "#D6115F"], ["#FF4D8D", "#FFC93C"], ["#2EC4B6", "#FFC93C"], ["#7BE08F", "#D6115F"]];
+        var PAIRS = ["WM", "WW", "MW", "WM", "MM", "WW"];
+
+        function stick(c) {
+          return '<rect x="-6" y="-1.1" width="22" height="2.2" rx="1.1" fill="' + c[0] + '"/>' +
+            '<rect x="-3" y="-1.1" width="2" height="2.2" fill="' + c[1] + '"/>' +
+            '<rect x="10" y="-1.1" width="2" height="2.2" fill="' + c[1] + '"/>' +
+            '<circle cx="-6.4" r="1.5" fill="#FFE08A"/><circle cx="16.4" r="1.5" fill="#FFE08A"/>';
+        }
+        /* An arm drawn from the shoulder at (0,0) along +x, then turned to its rest angle. */
+        function arm(sleeve, len, skin, rot, stickRot, sc) {
+          return '<g transform="rotate(' + rot + ')">' +
+            '<line x2="13" stroke="' + skin + '" stroke-width="2.8" stroke-linecap="round"/>' +
+            '<line x2="' + len + '" stroke="' + sleeve + '" stroke-width="3.9" stroke-linecap="round"/>' +
+            '<line x1="10.4" y1="-1.6" x2="10.4" y2="1.6" stroke="' + GOLD + '" stroke-width="1.1"/>' +
+            '<g transform="translate(13.6 0) rotate(' + stickRot + ')">' + stick(sc) + '</g>' +
+            '<circle cx="13.6" r="1.9" fill="' + skin + '"/></g>';
+        }
+        function head(skin, pagdi, bun) {
+          var h = '<rect x="-1.5" y="-57" width="3" height="5" fill="' + skin + '"/>';
+          if (bun) h += '<circle cx="-5.6" cy="-63" r="3.1" fill="' + HAIR + '"/>';
+          if (pagdi) {
+            h += '<circle cx="0.5" cy="-60.8" r="5.3" fill="' + skin + '"/>' +
+              '<path d="M-6,-62 Q-6.6,-69.6 0.6,-69.8 Q7,-69.6 6.4,-62.4 Q0.4,-64.8 -6,-62Z" fill="' + pagdi + '"/>' +
+              '<path d="M-6,-63.2 Q0.4,-66.2 6.5,-63.8" fill="none" stroke="' + GOLD + '" stroke-width="1"/>' +
+              '<path d="M-2,-69.4 Q-4.5,-74 -1,-75.5 Q-1.2,-72 0.4,-69.6Z" fill="' + GOLD + '"/>';
+          } else {
+            h += '<circle cx="-0.6" cy="-61.4" r="5.9" fill="' + HAIR + '"/>' +
+              '<circle cx="0.7" cy="-60.6" r="5.2" fill="' + skin + '"/>';
+          }
+          return h;
+        }
+        function woman(o, skin, sc) {
+          return '<g transform="translate(-5 -51)"><g class="arm-o">' + arm(o[2], 4, skin, -108, 18, sc) + '</g></g>' +
+            '<path d="M-5,-52 C-10,-46 -13,-40 -15,-29 L-11.5,-28.5 C-10.5,-37 -8,-44 -3,-50Z" fill="' + o[3] + '"/>' +
+            '<ellipse cx="-4" cy="-1.2" rx="3" ry="1.4" fill="' + SHOE + '"/><ellipse cx="4" cy="-1.2" rx="3" ry="1.4" fill="' + SHOE + '"/>' +
+            '<path d="M-6,-52 L6,-52 L5.4,-39.5 L-5.4,-39.5Z" fill="' + skin + '"/>' +
+            '<g transform="translate(0 -40.5)"><g class="sk">' +
+              '<path d="M-6,0 L6,0 C10,10 18,24 22,36 Q16.5,38.8 11,37 Q5.5,39.4 0,37.6 Q-5.5,39.4 -11,37 Q-16.5,38.8 -22,36 C-18,24 -10,10 -6,0Z" fill="' + o[0] + '"/>' +
+              '<path d="M-1.5,1 L-6,34 M3,1 L9,34 M-4,1 L-15,32 M5,1 L16,32" stroke="#000" stroke-opacity=".16" stroke-width=".8" fill="none"/>' +
+              '<path d="M-20.2,31 L20.2,31 L22,36 Q16.5,38.8 11,37 Q5.5,39.4 0,37.6 Q-5.5,39.4 -11,37 Q-16.5,38.8 -22,36Z" fill="' + o[1] + '"/>' +
+              '<g fill="#FFF8E7"><circle cx="-14.5" cy="34" r=".8"/><circle cx="-7.2" cy="34.3" r=".8"/><circle cx="0" cy="34.4" r=".8"/><circle cx="7.2" cy="34.3" r=".8"/><circle cx="14.5" cy="34" r=".8"/></g>' +
+              '<rect x="-6.3" y="-0.6" width="12.6" height="2" rx="1" fill="' + o[1] + '"/>' +
+            '</g></g>' +
+            '<path d="M-6.8,-52.4 Q0,-55 6.8,-52.4 L6.1,-45.2 Q0,-43.6 -6.1,-45.2Z" fill="' + o[2] + '"/>' +
+            head(skin, null, true) +
+            '<circle cx="-1.3" cy="-56.4" r=".9" fill="' + GOLD + '"/>' +
+            '<g transform="translate(5 -51)"><g class="arm-i">' + arm(o[2], 4, skin, -25, -25, sc) + '</g></g>';
+        }
+        function leg(cls, x, pants) {
+          return '<g transform="translate(' + x + ' -28)"><g class="' + cls + '">' +
+            '<path d="M-2.1,0 L2.1,0 L1.6,26 L-1.6,26Z" fill="' + pants + '"/>' +
+            '<ellipse cx="' + (x < 0 ? -0.8 : 0.8) + '" cy="26.8" rx="3" ry="1.4" fill="' + SHOE + '"/></g></g>';
+        }
+        function man(o, skin, sc) {
+          return '<g transform="translate(-5.5 -51)"><g class="arm-o">' + arm(o[0], 9, skin, -108, 18, sc) + '</g></g>' +
+            leg("leg-l", -3, o[2]) + leg("leg-r", 3, o[2]) +
+            '<g transform="translate(0 -42)"><g class="sk">' +
+              '<path d="M-6,0 L6,0 C9,5 13,11 15.5,16 Q12,18 8,16.4 Q4,18.2 0,16.6 Q-4,18.2 -8,16.4 Q-12,18 -15.5,16 C-13,11 -9,5 -6,0Z" fill="' + o[0] + '"/>' +
+              '<path d="M-14.2,13.6 L14.2,13.6 L15.5,16 Q12,18 8,16.4 Q4,18.2 0,16.6 Q-4,18.2 -8,16.4 Q-12,18 -15.5,16Z" fill="' + o[1] + '"/>' +
+            '</g></g>' +
+            '<path d="M-7.2,-52.6 Q0,-55 7.2,-52.6 L6,-41.5 L-6,-41.5Z" fill="' + o[0] + '"/>' +
+            '<rect x="-6.4" y="-43.4" width="12.8" height="2.4" rx="1.2" fill="' + o[1] + '"/>' +
+            '<path d="M0,-54 V-46" stroke="' + o[1] + '" stroke-width="1"/>' +
+            head(skin, o[3], false) +
+            '<g transform="translate(5.5 -51)"><g class="arm-i">' + arm(o[0], 9, skin, -25, -25, sc) + '</g></g>';
+        }
+        var w, m, k, built = 0;
+        function dancer(kind) {
+          var skin = SKIN[k % SKIN.length], sc = STICKS[k % STICKS.length];
+          k++;
+          return kind === "W" ? woman(WOMEN[w++ % WOMEN.length], skin, sc) : man(MEN[m++ % MEN.length], skin, sc);
+        }
+        /* Enough pairs to cover the window (plus one), odd so a pair sits in the middle.
+           Rebuilt only when the window grows, e.g. a phone turned to landscape. */
+        function build() {
+          var vw = window.innerWidth || 0;
+          var n = Math.min(25, Math.max(3, Math.ceil(vw / (vw >= 720 ? 157 : 131)) + 1));
+          if (n % 2 === 0) n++;
+          if (n <= built) return;
+          built = n; w = 0; m = 0; k = 0;
+          var html = "";
+          for (var i = 0; i < n; i++) {
+            var kinds = PAIRS[i % PAIRS.length];
+            var d = i % 2 ? -T / 2 : 0;          /* neighbours clash on alternate beats */
+            var dt = d - (i % 4) * T;            /* and take turns to twirl */
+            html += '<svg viewBox="0 8 120 92" focusable="false" style="--d:' + d + 's;--dt:' + dt + 's">' +
+              '<g transform="translate(36 97)"><g class="bob"><g class="twirl">' + dancer(kinds[0]) + '</g></g></g>' +
+              '<g transform="translate(84 97) scale(-1 1)"><g class="bob"><g class="twirl">' + dancer(kinds[1]) + '</g></g></g>' +
+              '<g transform="translate(60 30.3)"><g class="spark"><circle r="4.6" fill="' + GOLD + '" fill-opacity=".35"/>' +
+              '<path d="M0,-5.6 L1.3,-1.3 L5.6,0 L1.3,1.3 L0,5.6 L-1.3,1.3 L-5.6,0 L-1.3,-1.3Z" fill="#FFF8E7"/></g></g></svg>';
+          }
+          floor.innerHTML = html;
+        }
+        build();
+        var rt;
+        window.addEventListener("resize", function () { clearTimeout(rt); rt = setTimeout(build, 250); });
+
+        /* Pause while scrolled out of view, and let people stop the dancers
+           for good (WCAG 2.2.2). Stopped dancers hold the stick-clash pose. */
+        var btn = document.getElementById("danceToggle"), offscreen = false, stopped = false;
+        try { stopped = localStorage.getItem("igsaDancersStopped") === "1"; } catch (e) {}
+        function sync() {
+          floor.classList.toggle("paused", offscreen);
+          floor.classList.toggle("still", stopped);
+          if (btn) btn.setAttribute("aria-pressed", stopped ? "true" : "false");
+        }
+        var rm = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (btn && !rm) {
+          btn.hidden = false;
+          btn.addEventListener("click", function () {
+            stopped = !stopped;
+            try { localStorage.setItem("igsaDancersStopped", stopped ? "1" : "0"); } catch (e) {}
+            sync();
+          });
+        }
+        if ("IntersectionObserver" in window) {
+          new IntersectionObserver(function (es) {
+            offscreen = !es[es.length - 1].isIntersecting;
+            sync();
+          }).observe(floor);
+        }
+        sync();
+      } catch (e) { /* decorative only */ }
+    })();
+    </script>
   </header>
   <div class="mirrors" aria-hidden="true"></div>
 
