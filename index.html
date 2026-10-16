@@ -1202,7 +1202,6 @@ let ticketsLeft = null;     /* null until the server has answered */
 let soldOut = false;
 let ticketsTimer = null;
 let ticketsSeq = 0;         /* only the newest answer counts */
-let checking = false;       /* Register pressed, re-checking the count */
 let lastTally = "";
 
 function currentTier() {
@@ -1754,7 +1753,7 @@ function setTicketsLeft(n) {
   ticketsLeft = Math.max(0, n);
   renderTickets();
   if (!$("#done").hidden || currentTier() === "Closed") return;
-  if (ticketsLeft <= 0 && !sending && !checking) {
+  if (ticketsLeft <= 0 && !sending) {
     if (!soldOut) {
       soldOut = true;
       reportLate();
@@ -1812,7 +1811,7 @@ $("#reg").addEventListener("submit", async function (e) {
   e.preventDefault();
   const box = $("#formErr");
   const btn = $("#submitBtn");
-  if (sending || checking) return;
+  if (sending) return;
   if (currentTier() === "Closed") { reportLate(); showClosed(); return; }
   if (pendingFile) { btn.disabled = true; await pendingFile; btn.disabled = false; }
   const bad = validate();
@@ -1826,27 +1825,6 @@ $("#reg").addEventListener("submit", async function (e) {
     const inp = first.querySelector("input:not([type=radio]), textarea, input[type=radio]");
     if (inp) inp.focus({ preventScroll: true });
     return;
-  }
-  /* Group bigger than the tickets left: check the count again before turning
-     them away. A count of 0 goes to the server, which also finds a
-     registration that was saved but whose reply got lost. */
-  if (ticketsLeft !== null && ticketsLeft > 0 && computeBill(shownTier).people > ticketsLeft) {
-    checking = true;
-    btn.disabled = true;
-    btn.textContent = "Checking tickets...";
-    await refreshTickets(10000);
-    checking = false;
-    btn.disabled = false;
-    btn.textContent = "Register";
-    if (soldOut) return;
-    const people = computeBill(shownTier).people;
-    if (ticketsLeft !== null && ticketsLeft > 0 && people > ticketsLeft) {
-      box.hidden = false;
-      box.textContent = capText(people, "from your group, then press Register again. If you already paid for all " + people +
-        ", " + CONTACT + " and IGSA will refund the difference.");
-      $("#capWarn").scrollIntoView({ behavior: scrollMode(), block: "center" });
-      return;
-    }
   }
   box.hidden = true;
   const payload = buildPayload();
