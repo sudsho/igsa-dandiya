@@ -235,6 +235,14 @@ h1{
 .dancefloor.paused *{animation-play-state:paused}
 .dancefloor.still *{animation:none}
 .cd-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:20px 0 0}
+.tickets-left{
+  display:inline-flex;align-items:baseline;gap:8px;margin:0;padding:8px 14px 6px;border-radius:999px;
+  background:rgba(255,77,141,.18);border:1px solid rgba(255,77,141,.55);font-size:14.5px;color:#FFE3EE;
+}
+.tickets-left svg{width:18px;height:18px;flex:none;align-self:center;margin-top:-2px}
+.tickets-left strong{font-family:var(--display);font-weight:400;font-size:22px;color:#FF9EC3;font-variant-numeric:tabular-nums}
+.tickets-left.out{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.35)}
+.tickets-left.out strong{color:#FFF5EA}
 .cd-row .countdown{margin:0}
 .dance-toggle{
   flex:none;width:36px;height:36px;display:grid;place-items:center;padding:0;border-radius:50%;
@@ -450,6 +458,7 @@ textarea{resize:vertical;min-height:84px}
 .tier-line b{color:var(--ink)}
 .tier-note{margin:0;padding:10px 12px;border-radius:10px;font-size:14.5px;font-weight:600;background:color-mix(in srgb, var(--warn) 14%, var(--surface));border:1px solid var(--warn)}
 .qr-copy .warn{margin-top:6px;font-size:13.5px;font-weight:700;color:var(--err)}
+.cap-warn{margin:0;padding:10px 12px;border-radius:10px;font-size:14.5px;font-weight:600;color:var(--ink);background:color-mix(in srgb, var(--err) 12%, var(--surface));border:1px solid var(--err)}
 .bill{width:100%;border-collapse:collapse;font-size:15px}
 .bill th{text-align:left;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);font-weight:700;padding:0 0 8px}
 .bill td{padding:9px 0;border-top:1px solid var(--line);vertical-align:top}
@@ -680,6 +689,7 @@ footer a{font-weight:700;text-decoration:none;white-space:nowrap}
         <li><span class="dot" style="--c:#7BE08F"></span>Sticks provided</li>
       </ul>
       <div class="cd-row">
+        <p class="tickets-left" id="tkLeft" aria-live="polite" aria-atomic="true" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7.5A1.5 1.5 0 0 1 4.5 6h15A1.5 1.5 0 0 1 21 7.5V10a2 2 0 0 0 0 4v2.5a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 16.5V14a2 2 0 0 0 0-4z" fill="#FF4D8D"/><path d="M15 6.5v11" stroke="#FFE3EE" stroke-width="1.6" stroke-dasharray="1.6 1.8"/></svg><strong id="tkLeftN"></strong><span id="tkLeftT"></span></p>
         <p class="countdown" id="countdown"><span id="cdLabel">Early bird ends in</span> <strong id="cdVal">&nbsp;</strong></p>
         <button type="button" class="dance-toggle" id="danceToggle" aria-pressed="false" aria-label="Stop the dancing animation" title="Stop or start the dancers" hidden>
           <svg class="i-pause" viewBox="0 0 14 14" aria-hidden="true"><rect x="2.5" y="1.5" width="3.2" height="11" rx="1" fill="currentColor"/><rect x="8.3" y="1.5" width="3.2" height="11" rx="1" fill="currentColor"/></svg>
@@ -845,9 +855,9 @@ footer a{font-weight:700;text-decoration:none;white-space:nowrap}
 
   <main class="wrap">
     <section class="closed" id="closed" hidden>
-      <h2 tabindex="-1">Registration is closed</h2>
+      <h2 tabindex="-1" id="closedH">Registration is closed</h2>
+      <p id="closedWhy">Registration for Dandiya Night 2026 closed on Thursday 22 October at 11:59 PM, so the kitchen has a final dinner count.</p>
       <p id="closedPaid" hidden></p>
-      <p>Registration for Dandiya Night 2026 closed on Thursday 22 October at 11:59 PM, so the kitchen has a final dinner count.</p>
       <p>Already registered and can't find your details? Email <a href="mailto:igsa.uofl@gmail.com">igsa.uofl@gmail.com</a> or call Junead on <a href="tel:+15028761596">+1 (502) 876-1596</a>.</p>
     </section>
 
@@ -986,6 +996,7 @@ footer a{font-weight:700;text-decoration:none;white-space:nowrap}
         <div class="stage-body">
           <p class="tier-line" id="tierLine"></p>
           <p class="tier-note" id="tierNote" role="status" hidden></p>
+          <p class="cap-warn" id="capWarn" role="alert" hidden></p>
           <div id="bill"></div>
           <div class="qr-slot">
             <img class="qr" src="assets/venmo-qr.png" alt="Venmo QR code to pay Mohammad Junead Mankari, @junead1298" width="136" height="136">
@@ -1159,6 +1170,7 @@ const MAX_RAW_BYTES = 5 * 1024 * 1024;
 const CARD_COLORS = ["#FF8C1A", "#0E8FA0", "#2FA35B", "#7A3E9D", "#D6115F"];
 const CONTACT = "email igsa.uofl@gmail.com or call Junead on +1 (502) 876-1596";
 const UOFL_EMAIL = /^[^\s@]+@louisville\.edu$/i;
+const CLOSED_WHY = "Registration for Dandiya Night 2026 closed on Thursday 22 October at 11:59 PM, so the kitchen has a final dinner count.";
 const GUEST_UOFL_MSG = "UofL students, faculty and staff register themselves. Remove this guest and ask them to register with their own UofL email and ID.";
 
 const REF = "DN-" + Date.now().toString(36).toUpperCase() + Math.random().toString(36).slice(2, 6).toUpperCase();
@@ -1183,6 +1195,14 @@ let flipped = false;        /* early bird ended while this page was open */
 let sending = false;
 let lateSent = false;
 const openAtLoad = lastTier !== "Closed";
+/* Tickets are capped. The server holds the count and enforces it; the page
+   shows what is left, warns a group that is too big, and closes when sold out. */
+const TICKETS_URL = LIVE ? ENDPOINT + "?tickets=1" : "";
+let ticketsLeft = null;     /* null until the server has answered */
+let soldOut = false;
+let ticketsTimer = null;
+let ticketsSeq = 0;         /* only the newest answer counts */
+let checking = false;       /* Register pressed, re-checking the count */
 let lastTally = "";
 
 function currentTier() {
@@ -1407,6 +1427,13 @@ function update() {
   $("#qrAmount").textContent = "$" + b.total;
   $("#barTotal").textContent = "$" + b.total;
   $("#barNote").textContent = b.people + (b.people === 1 ? " person" : " people") + (b.complete ? "" : ", details missing");
+
+  /* group bigger than the tickets left */
+  const cw = $("#capWarn");
+  const extra = ticketsLeft !== null && ticketsLeft > 0 ? b.people - ticketsLeft : 0;
+  cw.hidden = extra <= 0;
+  const cwText = extra > 0 ? capText(b.people, "before you pay.") : "";
+  if (cw.textContent !== cwText) cw.textContent = cwText;
 
   /* Early bird ended while the page was open. They may already have paid
      the early-bird amount, so say what to do either way. */
@@ -1691,6 +1718,8 @@ async function sendOnce(payload, ms) {
       const err = new Error(out && out.userError ? out.error : "save failed");
       err.user = !!(out && out.userError);
       err.closed = !!(out && out.closed);
+      err.soldOut = !!(out && out.soldOut);
+      if (out && typeof out.left === "number") err.left = out.left;
       throw err;
     }
     return out;
@@ -1703,6 +1732,65 @@ function paidNote() {
   const z = $("#zelleRef").value.trim();
   if (z) return "If you already sent a payment, " + CONTACT + " with your payment confirmation " + z + " and we'll sort it out.";
   return "If you sent a Venmo payment but didn't finish registering, " + CONTACT + " with the amount and the time you sent it, and we'll sort it out.";
+}
+
+/* ---------------- tickets left ---------------- */
+function capText(people, tail) {
+  const extra = people - ticketsLeft;
+  return "Only " + ticketsLeft + (ticketsLeft === 1 ? " ticket is" : " tickets are") + " left, and your group has " +
+    people + " people. Remove " + extra + (extra === 1 ? " person " : " people ") + tail;
+}
+function renderTickets() {
+  const box = $("#tkLeft");
+  if (ticketsLeft === null || (currentTier() === "Closed" && !soldOut)) { box.hidden = true; return; }
+  box.hidden = false;
+  box.classList.toggle("out", ticketsLeft <= 0);
+  const n = ticketsLeft <= 0 ? "Sold out" : String(ticketsLeft);
+  const t = ticketsLeft <= 0 ? "" : (ticketsLeft === 1 ? "ticket left" : "tickets left");
+  if ($("#tkLeftN").textContent !== n) $("#tkLeftN").textContent = n;
+  if ($("#tkLeftT").textContent !== t) $("#tkLeftT").textContent = t;
+}
+function setTicketsLeft(n) {
+  ticketsLeft = Math.max(0, n);
+  renderTickets();
+  if (!$("#done").hidden || currentTier() === "Closed") return;
+  if (ticketsLeft <= 0 && !sending && !checking) {
+    if (!soldOut) {
+      soldOut = true;
+      reportLate();
+      showClosed();
+    }
+    return;
+  }
+  /* Tickets freed up (a cancellation, or a higher limit): open the form again. */
+  if (ticketsLeft > 0 && soldOut) reopen();
+  update();
+}
+function reopen() {
+  soldOut = false;
+  lateSent = false;
+  $("#closed").hidden = true;
+  $("#reg").hidden = false;
+  $("#notices").hidden = false;
+  $("#tickets").hidden = false;
+  $("#countdown").hidden = false;
+  $("#closedH").textContent = "Registration is closed";
+  $("#closedWhy").textContent = CLOSED_WHY;
+}
+async function refreshTickets(ms) {
+  if (!TICKETS_URL || !$("#done").hidden) return;
+  const seq = ++ticketsSeq;
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), ms || 30000);
+  try {
+    const res = await fetch(TICKETS_URL, { redirect: "follow", cache: "no-store", signal: ctrl.signal });
+    const out = await res.json();
+    if (seq === ticketsSeq && out && out.ok && typeof out.left === "number") setTicketsLeft(out.left);
+  } catch (e) {
+    /* No count shown is fine: the server still enforces the limit. */
+  } finally {
+    clearTimeout(timer);
+  }
 }
 
 /* Someone who paid just before the close still reaches the server, which
@@ -1724,7 +1812,7 @@ $("#reg").addEventListener("submit", async function (e) {
   e.preventDefault();
   const box = $("#formErr");
   const btn = $("#submitBtn");
-  if (sending) return;
+  if (sending || checking) return;
   if (currentTier() === "Closed") { reportLate(); showClosed(); return; }
   if (pendingFile) { btn.disabled = true; await pendingFile; btn.disabled = false; }
   const bad = validate();
@@ -1738,6 +1826,27 @@ $("#reg").addEventListener("submit", async function (e) {
     const inp = first.querySelector("input:not([type=radio]), textarea, input[type=radio]");
     if (inp) inp.focus({ preventScroll: true });
     return;
+  }
+  /* Group bigger than the tickets left: check the count again before turning
+     them away. A count of 0 goes to the server, which also finds a
+     registration that was saved but whose reply got lost. */
+  if (ticketsLeft !== null && ticketsLeft > 0 && computeBill(shownTier).people > ticketsLeft) {
+    checking = true;
+    btn.disabled = true;
+    btn.textContent = "Checking tickets...";
+    await refreshTickets(10000);
+    checking = false;
+    btn.disabled = false;
+    btn.textContent = "Register";
+    if (soldOut) return;
+    const people = computeBill(shownTier).people;
+    if (ticketsLeft !== null && ticketsLeft > 0 && people > ticketsLeft) {
+      box.hidden = false;
+      box.textContent = capText(people, "from your group, then press Register again. If you already paid for all " + people +
+        ", " + CONTACT + " and IGSA will refund the difference.");
+      $("#capWarn").scrollIntoView({ behavior: scrollMode(), block: "center" });
+      return;
+    }
   }
   box.hidden = true;
   const payload = buildPayload();
@@ -1770,8 +1879,10 @@ $("#reg").addEventListener("submit", async function (e) {
     $("#savingNote").hidden = true;
     sending = false;
     box.hidden = false;
-    if (err && err.closed) {
+    if (err && typeof err.left === "number") { ticketsLeft = Math.max(0, err.left); renderTickets(); update(); }
+    if (err && (err.closed || err.soldOut)) {
       lateSent = true;
+      if (err.soldOut) soldOut = true;
       showClosed();
       return;
     } else if (err && err.name === "AbortError") {
@@ -1790,6 +1901,7 @@ $("#reg").addEventListener("submit", async function (e) {
 function showDone(payload, out) {
   lateSent = true;
   clearInterval(tickTimer);
+  clearInterval(ticketsTimer);
   clearTimeout(cutoffTimer);
   const amount = typeof out.amountDue === "number" ? out.amountDue : payload.amountShown;
   const ref = out.ref || payload.ref;
@@ -1798,7 +1910,9 @@ function showDone(payload, out) {
   $("#doneAmt").textContent = "$" + amount;
   const n = 1 + payload.guests.length + payload.kids.length;
   $("#doneLede").textContent = (n === 1 ? first + ", you're registered" : first + ", your group of " + n + " is registered") +
-    " for Dandiya Night. See you on the dance floor!";
+    " for Dandiya Night. See you on the dance floor!" +
+    (typeof out.left !== "number" ? "" : out.left === 0 ? (n === 1 ? " You got the last ticket." : " You got the last tickets.")
+      : " Only " + out.left + (out.left === 1 ? " ticket is" : " tickets are") + " left, so tell your friends to register soon.");
   const tier = PRICES[out.tier] ? out.tier : shownTier;
   const priceOf = x => PRICES[tier] ? PRICES[tier][x.aff] : 0;
   let items = '<li>' + esc(payload.me.name) + '<span>You, ' + money(priceOf(payload.me)) + '</span></li>';
@@ -1833,6 +1947,12 @@ function showDone(payload, out) {
 }
 
 function showClosed() {
+  if (soldOut) {
+    $("#closedH").textContent = "Dandiya Night is sold out";
+    $("#closedWhy").textContent = "Every ticket has been taken. Thank you for the amazing response, and see you at the next IGSA event!";
+  } else {
+    $("#tkLeft").hidden = true;
+  }
   const msg = paidNote();
   const paid = $("#closedPaid");
   paid.textContent = msg;
@@ -1975,7 +2095,12 @@ shotField.addEventListener("drop", e => { const f = e.dataTransfer && e.dataTran
 $("#reg").reset();
 $("#me-card").innerHTML = personFields("me", true);
 if (currentTier() === "Closed") showClosed();
-else { update(); tick(); tickTimer = setInterval(tick, 30000); }
+else {
+  update(); tick(); tickTimer = setInterval(tick, 30000);
+  refreshTickets();
+  ticketsTimer = setInterval(refreshTickets, 60000);
+  document.addEventListener("visibilitychange", () => { if (!document.hidden) refreshTickets(); });
+}
 })();
 </script>
 </body>
